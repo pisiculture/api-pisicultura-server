@@ -1,0 +1,17 @@
+{
+  "name": "websockt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": " nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "moongose": "^1.0.0",
+    "nodemon": "^2.0.22",
+    "ws": "^8.13.0"
+  }
+}
