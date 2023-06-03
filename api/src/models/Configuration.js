@@ -6,11 +6,19 @@ const ConfigurationSchema = new Schema({
     id: {
         type: String
     },
+    notify: {
+        type: Boolean,
+        require: true
+    },
+    active: {
+        type: Boolean,
+        require: true
+    },
     lastUpdate: {
         type: Date,
         require: true
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
 
 const Configuration = mongoose.model("configuration", ConfigurationSchema);

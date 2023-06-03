@@ -12,6 +12,9 @@ router.use("/permission", permissionRouter);
 const userRouter = require("./user");
 router.use("/user", userRouter);
 
+const configurationRouter = require('./configuration');
+router.use("/configuration", configurationRouter);
+
 module.exports = router;
 
 
