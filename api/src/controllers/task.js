@@ -1,4 +1,4 @@
-const service = require('../services/task_service');
+const service = require('../services/task');
 
 module.exports = {
 
