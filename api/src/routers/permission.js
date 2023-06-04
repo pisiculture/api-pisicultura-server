@@ -8,4 +8,7 @@ router.route('/:user/:installation')
 router.route('/')
       .post((req, res) => controller.create(req, res));
 
+router.route("/:user")
+      .get((req, res) => controller.getIdUser(req, res));
+      
 module.exports = router;
