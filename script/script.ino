@@ -6,6 +6,8 @@
 WebSocketClient ws(false);
 
 void setup() {
+  pinMode(D6, OUTPUT);
+  pinMode(D7, OUTPUT);
   Serial.begin(921600);
   Serial.println("");
   Serial.println("Inicializando aplicação");
@@ -13,8 +15,15 @@ void setup() {
 }
 
 void loop() {
-  webSocket();
+  //webSocket();
+  delay(2000);  
+  Serial.printf("teste"); 
+  digitalWrite(D7, LOW);
+  digitalWrite(D6, HIGH);
   delay(2000);
+  digitalWrite(D7, HIGH);
+  delay(2000);
+  digitalWrite(D6, LOW);
 }
 
 void connetcWifi() {

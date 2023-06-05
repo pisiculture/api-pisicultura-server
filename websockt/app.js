@@ -1,15 +1,9 @@
-const WebSocket = require('ws');
-const server = new WebSocket.Server({ port: 3001 });
-let sockets = [];
-server.on('connection', function(socket) {
-  
-  sockets.push(socket);
-  
-  socket.on('message', function(msg) {
-    sockets.forEach(s => s.send(msg));
-  });
-  
-  socket.on('close', function() {
-    sockets = sockets.filter(s => s !== socket);
-  });
-});
+const express = require("express");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const router = require("../")
+app.use("/", )
