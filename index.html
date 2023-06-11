@@ -1,0 +1,8 @@
+<script>
+    let socket = new WebSocket("ws://192.168.0.113:3050");
+
+    socket.onopen = function(e) {
+        socket.send("My name is John");
+    };
+      
+</script>
