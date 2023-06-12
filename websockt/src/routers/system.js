@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const service = require("../services/system");
+const service = require("../controllers/system");
 
 router.route("/connections")
       .get((req, res) => service.sessions(req, res));

@@ -1,10 +1,14 @@
 const ws = require("../ws/websocket");
 
 module.exports = {
-   
-   async sessions(req, res) {
 
-        await res.status(200).json(ws.sessions);
+    sessions() {
+
+        let sessions = [];
+
+        ws.getSessions().forEach(i => sessions.push({ key: i.key, connection: i.connection}))
+        
+        return sessions;
 
     }
 }
