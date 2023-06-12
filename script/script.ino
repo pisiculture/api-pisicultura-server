@@ -44,7 +44,7 @@ void connetcWifi() {
 
 void webSocket() {
   if (!ws.isConnected()) {
-    ws.connect("192.168.0.113", "/", 3050);
+    ws.connect("192.168.0.113", "/", 3000);
     if (ws.isConnected()) {
       ws.send("{ \"event\":\"REGISTER\", \"key\":\"dGVzdGVJbmQ\", \"connection\":\"SOCKET\"}");
       Serial.println("Conexão webSocket realizada com sucesso.");
