@@ -45,10 +45,11 @@ void connetcWifi() {
 void webSocket() {
   if (!ws.isConnected()) {
     ws.connect("192.168.0.113", "/", 3050);
-    if (ws.isConnected())
+    if (ws.isConnected()) {
+      ws.send("{ \"event\":\"REGISTER\", \"key\":\"dGVzdGVJbmQ\", \"connection\":\"SOCKET\"}");
       Serial.println("Conexão webSocket realizada com sucesso.");
+    }
   } else {
-    ws.send("{'event': 'REGISTER', 'state': 'SUCCESS', 'value': null}");
     String json;
     if (ws.getMessage(json))
       jsonParser(json);
@@ -69,16 +70,18 @@ void jsonParser(String json) {
 void proxy(StaticJsonDocument<200> dto) {
   if (dto["action"] == "EXECUTE")
     execute(dto);
-  if(dto["action"] == "READ")
+  if (dto["action"] == "READ")
     read(dto);
 }
 
 void read(StaticJsonDocument<200> dto) {
+  Serial.println("Send message");
   bool water_pump = digitalRead(WATER_PUMP) == 1;
   bool water_lock = digitalRead(WATER_LOCK) == 1;
-  ws.send("{ event: 'MESSAGE', data: { ph: " + String(calculatePH()) + 
-  ", water_pump: " + String(water_pump) + 
-  ", water_lock: " + String(water_lock) + "}}");   
+  ws.send("{ \"event\": \"MESSAGE\", \"data\": { \"ph\": " 
+  + String(calculatePH()) + ", \"water_pump\": " 
+  + String(water_pump) + ", \"water_lock\": " 
+  + String(water_lock) + "}}");
 }
 
 void execute(StaticJsonDocument<200> dto) {
@@ -97,17 +100,17 @@ void execute(StaticJsonDocument<200> dto) {
 }
 
 float calculatePH() {
-  float valor_calibracao = 21.34;   
-  float soma_tensao = 0;       
+  float valor_calibracao = 21.34;
+  float soma_tensao = 0;
   float tensao;
-           
-  for(int i = 0; i < 10; i++) {  
+
+  for (int i = 0; i < 10; i++) {
     tensao = (analogRead(PH) * 5.0) / 1024.0;
     soma_tensao = (soma_tensao + tensao);
-    delay(100);  
+    delay(100);
   }
-  float media = soma_tensao / 10;             
-  float valor_pH = -5.70 * media + valor_calibracao; 
+  float media = soma_tensao / 10;
+  float valor_pH = -5.70 * media + valor_calibracao;
   Serial.println(valor_pH);
   return valor_pH;
 }
