@@ -42,7 +42,6 @@ function onClose(session) {
 
 function onConnection(session, req) {
 
-  console.log(session);
   sessions.push({ session: session })
 
   session.on('message', data => onMessage(session, data));
@@ -53,13 +52,11 @@ function onConnection(session, req) {
 module.exports = {
   ws(server) {
     const wss = new WebSocket.Server({ server });
-
     wss.on('connection', onConnection);
-
     console.log(`App Web Socket Server is running!`);
     return wss;
   },
-  
+
   getSessions() {
     return sessions;
   }
