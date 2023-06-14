@@ -8,5 +8,13 @@ module.exports = {
         } catch (error) {
             res.status(406).json({ message: error.message });
         }
+    },
+
+    async find(req, res) {
+        try {
+            res.status(200).json(await service.find(req.body));
+        } catch (error) {
+            res.status(406).json({ message: error });
+        }
     }
 }

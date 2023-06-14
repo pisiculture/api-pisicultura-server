@@ -4,7 +4,7 @@ const controller = require("../controllers/notifications");
 router.route("/")
       .post((req, res) => controller.create(req, res));
 
-router.route("/state/:state")
-      .get((req, res) => controller.findByState(req, res));
+router.route("/find")
+      .post((req, res) => controller.find(req, res));
 
 module.exports = router;
