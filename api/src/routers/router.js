@@ -13,6 +13,7 @@ const configurationRouter = require('./configuration');
 router.use("/configuration", configurationRouter);
 
 const notification = require("./notification")
+router.use("/notification", notification);
 
 module.exports = router;
 
