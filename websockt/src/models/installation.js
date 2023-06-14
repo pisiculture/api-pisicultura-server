@@ -2,10 +2,14 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose;
 
-const { ConfigurationSchema } = require("./Configuration");
+const { ConfigurationSchema } = require("./configuration");
 
 const InstallationSchema = new Schema({
     id: {
+        type: String,
+        require: true
+    },
+    key: {
         type: String,
         require: true
     },
@@ -14,7 +18,7 @@ const InstallationSchema = new Schema({
         require: true
     },
     configurations: {
-        type: [ ConfigurationSchema ]
+        type: ConfigurationSchema
     },
     dateCreate: {
         type: Date,

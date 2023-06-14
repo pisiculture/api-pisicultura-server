@@ -1,4 +1,5 @@
 const { User: UserModel } = require('../models/user.js');
+const notificationService = require("../services/notification");
 
 module.exports = {
     async create(json) {
@@ -12,7 +13,9 @@ module.exports = {
             password: json.password
         });
 
-        return user.save();
+        const userSave = user.save();
+         
+        
     },
 
     async findByEmailAndPassword(email, password) {
@@ -22,3 +25,5 @@ module.exports = {
         return response;
     }
 }
+
+

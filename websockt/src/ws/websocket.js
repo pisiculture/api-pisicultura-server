@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 let sessions = [];
+const analysisService = require("../services/analysis");
 
 function onError(session, err) {
   console.error(`onError: ${err.message}`);
@@ -19,7 +20,9 @@ function onMessage(session, data) {
       break;
     }
     case 'MESSAGE': {
-      analysisService.create(json.data);
+      const data = json.data;
+      data.key = getKeyBySessionAndConnection(session, 'SOCKET');
+      analysisService.create(data);
       break;
     }
     default:
@@ -27,6 +30,13 @@ function onMessage(session, data) {
 
       }
   }
+}
+
+function getKeyBySessionAndConnection(session, connection) {
+  const response = sessions.find(i => i.session == session && i.connection == connection);
+  if (!response)
+    throw new Error("Session not found.");
+  return response.key;
 }
 
 function onClose(session) {

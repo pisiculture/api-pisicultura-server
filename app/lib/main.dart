@@ -7,8 +7,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  Socket? socket;
-
   const MyApp({super.key});
 
   @override
@@ -46,16 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() async {
-    final _socket = await Socket.connect('192.168.0.113', 3050);
-    setState(() {
-      socket = _socket;
-    });
-
-    socket?.listen((event) {
-      print(event);
-    });
-
-    socket.write("");
     super.initState();
   }
 

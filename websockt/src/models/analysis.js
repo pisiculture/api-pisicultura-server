@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose;
 
-const { InstallationSchema } = require("./Installation");
+const { InstallationSchema } = require("./installation");
 
 const AnalysisSchema = new Schema({
     id: {
@@ -13,7 +13,7 @@ const AnalysisSchema = new Schema({
         require: true
     },
     installation: {
-        type: [InstallationSchema]
+        type: InstallationSchema
     },
     dateCreate: {
         type: Date,
