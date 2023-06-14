@@ -1,22 +1,22 @@
-const { Analysis: AnalysisModel } = require("../models/Analysis");
+const { Analysis: AnalysisModel } = require("../models/analysis");
 
-const servi = require("../../app");
-
+const installationService = require("../services/installation");
 
 module.exports = {
     async create(data) {
-
-        console.log(data);
-
+        const installation = installationService.findByKey(data.key);
         const analysis = AnalysisModel({
-            ph: data.ph
+            ph: data.ph,
+            installation: installation
         });
-
         await analysis.save();
     },
 
-    findByIdInstallation(req, res) {
-        console.log(servi.sockets);
-        res.status(200).json({ message: "Success"});
+    async findByIdInstallation(id) {
+        await AnalysisModel.find({})
+            .then((data) => {
+                return data;
+            });
+        throw Error("Error");
     }
 }
