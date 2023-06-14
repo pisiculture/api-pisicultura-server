@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const { UserSchema } = require('../models/User');
-const { InstallationScrema } = require('../models/Installation');
+const { UserSchema } = require('./user');
+const { InstallationScrema } = require('./installation');
 
 const { Schema } = mongoose;
 

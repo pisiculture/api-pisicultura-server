@@ -1,6 +1,11 @@
-const { Installation } = require('../models/Installation');
+const { Installation } = require('../models/installation');
 
 module.exports = {
 
-    async cre
+    async create(vo) {
+
+        const data = {
+            
+        }
+    }
 }

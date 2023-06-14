@@ -1,5 +1,5 @@
-const { Configuration: ConfigurationModel } = require("../models/Configuration");
-const { Installation: InstallationModel } = require("../models/Installation");
+const { Configuration: ConfigurationModel } = require("../models/configuration");
+const { Installation: InstallationModel } = require("../models/installation");
 
 module.exports = {
     async update(id, vo) {

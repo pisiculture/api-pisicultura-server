@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose;
 
-const { ConfigurationSchema } = require("./Configuration");
+const { ConfigurationSchema } = require("./configuration");
 
 const InstallationSchema = new Schema({
     id: {

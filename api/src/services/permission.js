@@ -1,4 +1,4 @@
-const { Permission: PermissionModel } = require('../models/Permission.js')
+const { Permission: PermissionModel } = require('../models/permission.js')
 
 
 module.exports = {
