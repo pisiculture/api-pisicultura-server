@@ -29,21 +29,12 @@ function onMessage(session, data) {
   }
 }
 
-function sendMessage(key, connection, message) {
-  if (sessions && sessions !== [])
-    sessions
-      .filter(i => (i.key === key) && (i.connection == connection))
-      .forEach(s => s.session.send(message));
-}
-
 function onClose(session) {
   sessions = sessions.filter(s => s.session !== session);
 }
 
 function onConnection(session, req) {
-
   sessions.push({ session: session })
-
   session.on('message', data => onMessage(session, data));
   session.on('error', error => onError(session, error));
   session.on('close', socket => onClose(session));
@@ -59,6 +50,19 @@ module.exports = {
 
   getSessions() {
     return sessions;
-  }
+  },
 
+  sendMessage(key, connection, message) {
+    if (sessions && sessions !== []) {
+      let send = false;
+      sessions
+        .filter(i => (i.key === key) && (i.connection == connection))
+        .forEach(s => {
+          send = true;
+          s.session.send(JSON.stringify(message));
+        });
+      if (!send)
+        throw Error("Client not connected in server...");
+    }
+  }
 }

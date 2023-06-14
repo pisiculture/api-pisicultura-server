@@ -12,10 +12,11 @@ module.exports = {
         }
     },
 
-    post: async (req, res) => {
+    async create(req, res) {
         try {
+            service.create(req.body);
             res.status(201)
-               .json(service.post(req.body));
+               .json({ message: "User created successfully, check your email box."});
         } catch (error) {
             res.status(406)
                .json({ message: "Params required not found. " });

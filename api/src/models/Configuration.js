@@ -23,6 +23,4 @@ const ConfigurationSchema = new Schema({
 
 const Configuration = mongoose.model("configuration", ConfigurationSchema);
 
-module.exports = {
-    Configuration, ConfigurationSchema
-}
+module.exports = { Configuration, ConfigurationSchema }

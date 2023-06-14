@@ -1,8 +1,5 @@
 const router = require("express").Router();
 
-const taskRouter = require("./task");
-router.use("/task", taskRouter);
-
 const installationRouter = require("./installation");
 router.use("/installation", installationRouter);
 
