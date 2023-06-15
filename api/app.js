@@ -11,4 +11,4 @@ conn();
 const routers = require("./src/routers/router");
 app.use('/', routers);
 
-app.listen(3000, () => console.log('Servidor API iníciado com sucesso.'));
+app.listen(3001, () => console.log('Servidor API iníciado com sucesso.'));

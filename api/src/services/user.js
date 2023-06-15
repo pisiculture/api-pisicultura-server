@@ -3,19 +3,23 @@ const notificationService = require("../services/notification");
 
 module.exports = {
     async create(json) {
-
-        if (UserModel.find({ email: json.email }))
-            throw "E-mail in use.";
-
-        const user = UserModel({
+        if (this.findByEmail(json.email))
+            throw Error("E-mail in use.");
+        const model = UserModel({
             email: json.email,
             name: json.name,
-            password: json.password
+            password: json.password,
+            createAt: new Date()
         });
+        return await model.save();
+    },
 
-        const userSave = user.save();
-         
-        
+    async findByEmail(email) {
+        await UserModel.find({ email: email })
+            .then(r => {
+                return r
+            });
+        return {};
     },
 
     async findByEmailAndPassword(email, password) {

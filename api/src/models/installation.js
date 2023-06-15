@@ -9,21 +9,26 @@ const InstallationSchema = new Schema({
         type: String,
         require: true
     },
+    key: {
+        type: String,
+        require: true
+    },
     description: {
         type: String,
         require: true
     },
     configurations: {
-        type: [ConfigurationSchema]
+        type: ConfigurationSchema
     },
-    dateCreate: {
+    createAt: {
         type: Date,
         require: true
     },
+    updatedAt: {
+        type: Date
+    }
 }, { timestamp: true });
 
 const Installation = mongoose.model("installation", InstallationSchema);
 
-module.exports = {
-    Installation, InstallationSchema
-}
+module.exports = { Installation, InstallationSchema }

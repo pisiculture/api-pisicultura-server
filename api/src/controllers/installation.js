@@ -23,9 +23,9 @@ module.exports = {
         }
     },
 
-    put: async (req, res) => {
+     async update(req, res) {
         try {
-            res.status()
+            res.status(200).json({});
         } catch (error) {
           res.status(406).json({message: error});   
         }

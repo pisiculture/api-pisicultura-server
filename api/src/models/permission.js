@@ -1,23 +1,31 @@
 const mongoose = require('mongoose');
 
 const { UserSchema } = require('./user');
-const { InstallationScrema } = require('./installation');
+const { InstallationSchema } = require('./installation');
 
 const { Schema } = mongoose;
 
 const PermissionSchema = new Schema({
     id: String,
     user: {
-        type: [UserSchema],
+        type: UserSchema,
         require: true
     },
     installation: {
-        type: [InstallationScrema],
+        type: InstallationSchema,
         require: true
     },
-    dateCreate: {
+    privilegs: {
+        type: [],
+        require: true
+    },
+    createdAt: {
         type: Date,
         require: true
+    },
+    updatedAt: {
+        type: Date,
+        required: true
     }
 }, { timestamps: true });
 

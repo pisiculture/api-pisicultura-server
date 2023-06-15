@@ -1,5 +1,4 @@
 const { Configuration: ConfigurationModel } = require("../models/configuration");
-const { Installation: InstallationModel } = require("../models/installation");
 
 module.exports = {
     async update(id, vo) {
@@ -10,20 +9,12 @@ module.exports = {
 
     },
 
-    async create(vo) {
-
-        const installation = InstallationModel.find({ id: vo.idinstallation });
-
-        if (!installation)
-            throw Error("Installation not found.");
-
+    async createDefault() {
         const model = new ConfigurationModel({
-            installation: [installation],
             water_pump: vo.water_pump || false,
             water_lock: vo.water_lock || false
         });
-
-        await model.save();
+       return await model.save();
     },
 
     async findByIdInstallation() {
