@@ -15,8 +15,7 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
-
-    dateCreate: {
+    createdAt: {
         type: Date,
         require: true
     }

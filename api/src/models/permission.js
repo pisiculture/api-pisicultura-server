@@ -24,8 +24,7 @@ const PermissionSchema = new Schema({
         require: true
     },
     updatedAt: {
-        type: Date,
-        required: true
+        type: Date
     }
 }, { timestamps: true });
 

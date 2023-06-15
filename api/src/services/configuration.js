@@ -11,8 +11,8 @@ module.exports = {
 
     async createDefault() {
         const model = new ConfigurationModel({
-            water_pump: vo.water_pump || false,
-            water_lock: vo.water_lock || false
+            water_pump: false,
+            water_lock: false
         });
        return await model.save();
     },

@@ -5,7 +5,7 @@ module.exports = {
         try {
             await res.status(201).json(await service.create(req.body));
         } catch (error) {
-            res.status(415).json({ message: error });
+            res.status(406).json({ message: error.message });
         }
     }
 }

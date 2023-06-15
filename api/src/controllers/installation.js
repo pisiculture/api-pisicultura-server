@@ -14,9 +14,8 @@ module.exports = {
 
     async create(req, res) {
         try {
-            service.create(req.body);
             res.status(201)
-               .json({ message: "User created successfully, check your email box."});
+               .json(await service.create(req.body));
         } catch (error) {
             res.status(406)
                .json({ message: "Params required not found. " });
