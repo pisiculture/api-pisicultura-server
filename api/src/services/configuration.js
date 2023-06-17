@@ -17,13 +17,9 @@ module.exports = {
        return await model.save();
     },
 
-    async findByIdInstallation() {
-        const response = await ConfigurationModel.find({
-            idinstallation: {
-                id: id
-            }
-        });
-        if (!response)
+    async findByIdInstallation(idinstallation) {
+        const response = await ConfigurationModel.find({ "installation._id": idinstallation });
+        if (await response.length == 0)
             throw Error("Configuration not found.");
         return response;
     }

@@ -31,7 +31,7 @@ const NotificationSchema = new Schema({
         type: String,
         require: true
     },
-    onCreate: {
+    createAt: {
         type: Date,
         require: true
     },

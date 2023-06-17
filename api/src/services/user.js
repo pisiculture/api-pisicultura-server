@@ -25,18 +25,15 @@ module.exports = {
         return UserModel.find({ email: email });
     },
 
-    async findByEmailAndPassword(email, password) {
+    findByEmailAndPassword(email, password) {
         const response = UserModel.find({ email: email, password: password });
         if (!response)
             throw Error("E-mail or password is not valid...")
         return response;
     },
 
-    async findAll() {
-        await UserModel.find({})
-            .then(i => {
-                return i;
-            });
+    findAll() {
+       return UserModel.find({});
     },
 
     auth(vo) {
