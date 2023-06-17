@@ -27,6 +27,17 @@ module.exports = {
         if (!response)
             throw Error("E-mail or password is not valid...")
         return response;
+    },
+
+    async findAll() {
+        await UserModel.find({})
+            .then(i => {
+                return i;
+            });
+    },
+
+    auth(vo) {
+      return UserModel.find({username: vo.username});
     }
 }
 
