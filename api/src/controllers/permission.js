@@ -10,14 +10,16 @@ module.exports = {
             res.status(404).json({ message: "Permission not found." })
         }
     },
+
     getIdUser: async (req, res) => {
         try {
             res.status(200)
-               .json(service.getByIdUser(req.params.user));
+               .json(service.findByIdUser(req.params.id));
         } catch (error) {
             res.status(404).json({ message: "Not found permitions in installations for user." });
         }
     },
+    
     create: async (req, res) => {
         try {
             res.status(201)
