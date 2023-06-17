@@ -1,10 +1,10 @@
-const { Collection } = require("mongoose");
 const { Notification: NotificationModel } = require("../models/notifications");
 
 module.exports = {
-  async create(vo) {
 
+  async create(user, vo) {
     const model = new NotificationModel({
+      user: user,
       title: vo.title,
       description: vo.description,
       state: "PENDING",
@@ -12,7 +12,6 @@ module.exports = {
       onCreate: new Date(),
       destiny: vo.destiny
     });
-
     await model.save();
   },
 

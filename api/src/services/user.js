@@ -3,23 +3,26 @@ const notificationService = require("../services/notification");
 
 module.exports = {
     async create(json) {
-        if (this.findByEmail(json.email))
+
+        const email = await this.findByEmail(json.email);
+
+        if (email.length > 0)
             throw Error("E-mail in use.");
+
         const model = UserModel({
             email: json.email,
             name: json.name,
             password: json.password,
             createAt: new Date()
         });
-        return await model.save();
+
+        const user = await model.save();
+        notificationService.create(user, { title: "User created with success.", description: "Message success." });
+        return user;
     },
 
-    async findByEmail(email) {
-        await UserModel.find({ email: email })
-            .then(r => {
-                return r
-            });
-        return {};
+    findByEmail(email) {
+        return UserModel.find({ email: email });
     },
 
     async findByEmailAndPassword(email, password) {
@@ -37,7 +40,7 @@ module.exports = {
     },
 
     auth(vo) {
-      return UserModel.find({username: vo.username});
+        return UserModel.find({ username: vo.username });
     }
 }
 
