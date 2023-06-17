@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const controller = require('../controllers/user');
 
-router.route("/")
+router.route("/all")
       .get((req, res) => controller.getAll(req, res));
 
 router.route('/')

@@ -1,6 +1,5 @@
 const { Permission: PermissionModel } = require('../models/permission.js')
 
-
 module.exports = {
 
     async create(user, installation) {
@@ -13,14 +12,12 @@ module.exports = {
         return await model.save();
     },
 
-    async findByIdUser(id) {
-        await PermissionModel.find({ user: { id: id } })
-            .then(i => console.log(i));
+    getByIdUser(iduser) {
+        return PermissionModel.find({ "user._id": iduser });
     },
 
-    async findByEmailUser() {
-        await PermissionModel.find({ user: { email: req.body.email } })
-            .then(i => console.log(i));
+    findByEmailUser() {
+        return PermissionModel.find({ "user.email": req.body.email });
     },
 
     findByIdUserAndIdInstallation: async (req, res) => {

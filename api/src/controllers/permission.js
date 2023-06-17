@@ -2,36 +2,17 @@ const service = require('../services/permission.js')
 
 module.exports = {
 
-    getByUserAndInstallation: async (req, res) => {
+    async getByIdUser(req, res) {
         try {
-            res.status(200)
-               .json(service.getByUserAndInstallation(req.params.user, req.params.installation))
+            res.status(200).json(await service.getByIdUser(req.params.id))
         } catch (error) {
             res.status(404).json({ message: "Permission not found." })
         }
     },
 
-    getIdUser: async (req, res) => {
+    async update(req, res) {
         try {
-            res.status(200)
-               .json(service.findByIdUser(req.params.id));
-        } catch (error) {
-            res.status(404).json({ message: "Not found permitions in installations for user." });
-        }
-    },
-    
-    create: async (req, res) => {
-        try {
-            res.status(201)
-               .json(service.create(req.body));
-        } catch (err) {
-            res.status(415).json({ message: "Not conteins params request." })
-        }
-    },
-    put: async (req, res) => {
-        try {
-            res.status(200)
-               .json(service.put(req.params.id, req.body));
+            res.status(200).json(await service.update(req.params.id, req.body));
         } catch (error) {
             res.status(415).json({message: "Register not update."})
         }
