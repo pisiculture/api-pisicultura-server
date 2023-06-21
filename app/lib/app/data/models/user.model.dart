@@ -4,6 +4,7 @@ class User {
   String? _email;
   DateTime? _dateCreateAt;
   String? _password;
+
   String toJson() {
     return "";
   }
@@ -14,6 +15,10 @@ class User {
   getDateCreateAt() => _dateCreateAt ?? "";
   getPassword() => _password ?? "";
 
+  setId(val) => _id = val;
+  setName(val) => _name = val;
+  setEmail(val) => _email = val;
+  setDateCreateAt(val) => _dateCreateAt = val;
   setPassword(val) => _password = val;
 
   static fromMap(result) {}

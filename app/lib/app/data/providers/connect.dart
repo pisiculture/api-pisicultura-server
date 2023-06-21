@@ -2,18 +2,18 @@ import 'package:get/get.dart';
 import 'package:mobile/app/global/singleton/system.dart';
 
 class DwGetConnect extends GetConnect {
-  String _contentType = 'application/json';
+  final String _contentType = 'application/json';
   Map<String, String> _headers = {
     'Content-type': 'application/json',
     'Accept': 'application/json',
   };
 
   _addAuthHeader() {
-    if (!System.instance().getToken().isBlank()) {
+    if (!System.getInstance().getToken().isBlank()) {
       _headers = {
         'Content-type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': System.instance().getToken()
+        'Authorization': System.getInstance().getToken()
       };
     }
   }

@@ -15,9 +15,9 @@ class InitialController extends GetxController {
     ehPrimeiroLogin = await _findDataUserMemory();
 
     if (ehPrimeiroLogin!) {
-      System.instance()
+      System.getInstance()
           .setUser(await userRepository?.auth(username!, password!, true));
-      if (System.instance().getUser() != null) {
+      if (System.getInstance().getUser() != null) {
         Get.offAndToNamed(AppRoutes.home);
       }
     }

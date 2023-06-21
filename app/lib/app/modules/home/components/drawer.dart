@@ -74,11 +74,11 @@ class DJDrawer extends StatelessWidget {
               ),
               currentAccountPicture: const Icon(Icons.account_circle, size: 80),
               accountName: Text(
-                System.instance().getUser().getName(),
+                System.getInstance().getUser().getName(),
                 style: const TextStyle(fontSize: 17),
               ),
               accountEmail: Text(
-                System.instance().getUser().getEmail(),
+                System.getInstance().getUser().getEmail(),
                 style: const TextStyle(fontSize: 14),
               ),
             ),

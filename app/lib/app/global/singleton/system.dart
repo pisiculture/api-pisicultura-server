@@ -9,7 +9,7 @@ class System {
     _user = User();
   }
 
-  static System instance() {
+  static System getInstance() {
     _instance ??= System();
     return _instance!;
   }
