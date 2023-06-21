@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/global/singleton/system.dart';
+import 'package:mobile/app/modules/home/components/button.drawer.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/theme/theme.dart';
 
@@ -14,16 +15,14 @@ class HomeItemDto {
 
 class DJDrawer extends StatelessWidget {
   final List<HomeItemDto>? itens;
-  const DJDrawer({super.key, this.itens});
 
-  findItensDrawer() {
-    return [
-      HomeItemDto(
-        title: "Dashboard",
-        svgSrc: "assets/icons/menu_dashbord.svg",
-        press: () => Get.toNamed(AppRoutes.home),
-      ),
-      /*
+  final _itensMenu = [
+    HomeItemDto(
+      title: "Dashboard",
+      svgSrc: "assets/icons/menu_dashbord.svg",
+      press: () => Get.toNamed(AppRoutes.home),
+    ),
+    /*
       HomeItemDto(
         title: "Instalações",
         svgSrc: "assets/icons/bar-chart.svg",
@@ -59,8 +58,9 @@ class DJDrawer extends StatelessWidget {
         svgSrc: "assets/icons/logout.svg",
         press: () => logout,
       ),*/
-    ];
-  }
+  ];
+
+  DJDrawer({super.key, this.itens});
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +84,11 @@ class DJDrawer extends StatelessWidget {
             ),
             Column(
               children: List.generate(
-                itens!.length,
-                (index) => DrawerButton(
-                  onPressed: () => itens?[index].press,
+                _itensMenu.length,
+                (index) => DrawerListTile(
+                  title: _itensMenu[index].title,
+                  svgSrc: _itensMenu[index].svgSrc,
+                  press: _itensMenu[index].press,
                 ),
               ),
             )
