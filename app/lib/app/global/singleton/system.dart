@@ -1,4 +1,4 @@
-import 'package:mobile/app/data/models/user_model.dart';
+import 'package:mobile/app/data/models/user.model.dart';
 
 class System {
   static System? _instance;

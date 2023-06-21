@@ -14,7 +14,7 @@ void main() {
       title: 'Pisiculturas',
       theme: ThemeData(primarySwatch: Colors.blue),
       initialBinding: HomeBinding(),
-      home: const HomePage(),
+      home: HomePage(),
       getPages: AppPages.pages,
     ),
   );

@@ -12,9 +12,9 @@ class Dashbord {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['type'] = this.type;
-    data['message'] = this.message;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['type'] = type;
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -39,10 +39,10 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['temperature'] = this.temperature;
-    data['ph'] = this.ph;
-    data['oxynization'] = this.oxynization;
-    data['current_time'] = this.currentTime;
+    data['temperature'] = temperature;
+    data['ph'] = ph;
+    data['oxynization'] = oxynization;
+    data['current_time'] = currentTime;
     return data;
   }
 }

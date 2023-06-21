@@ -5,15 +5,16 @@ import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/theme/theme.dart';
 
 class HomeItemDto {
-  String title;
-  String svgSrc;
-  Function press;
+  String? title;
+  String? svgSrc;
+  Function? press;
 
   HomeItemDto({this.title, this.svgSrc, this.press});
 }
 
 class DJDrawer extends StatelessWidget {
-  const DJDrawer({super.key});
+  final List<HomeItemDto>? itens;
+  const DJDrawer({super.key, this.itens});
 
   findItensDrawer() {
     return [
@@ -83,11 +84,9 @@ class DJDrawer extends StatelessWidget {
             ),
             Column(
               children: List.generate(
-                itens.length,
-                (index) => DrawerListTile(
-                  title: itens[index].title,
-                  svgSrc: itens[index].svgSrc,
-                  press: itens[index].press,
+                itens!.length,
+                (index) => DrawerButton(
+                  onPressed: () => itens?[index].press,
                 ),
               ),
             )

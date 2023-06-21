@@ -1,28 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/data/repository/task.repository.dart';
-import 'package:mobile/app/global/components/icon.button.dart';
-import 'package:mobile/app/modules/home/components/cards.task.dart';
+import 'package:mobile/app/global/components/card.dart';
 import 'package:mobile/app/modules/home/components/drawer.dart';
 import 'package:mobile/app/modules/home/home_controller.dart';
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/status.dart' as status;
 
 class HomePage extends GetView<HomeController> {
   final taskRepository = Get.find<TaskRepository>();
-  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final channel = IOWebSocketChannel.connect('ws://localhost:3000');
-
-    channel.stream.listen((message) {
-      channel.sink.close(status.goingAway);
-    });
-
-    channel.sink
-        .add('{ "event": "REGISTER", "key": "rewrw", "connection": "CLIENTE"}');
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pisicultura'),
@@ -71,7 +58,7 @@ class HomePage extends GetView<HomeController> {
               ),
             ),
           ),
-          SliverPadding(
+          /* SliverPadding(
             padding: const EdgeInsets.only(top: 10.0, left: 5),
             sliver: SliverToBoxAdapter(
               child: ListTile(
@@ -107,7 +94,7 @@ class HomePage extends GetView<HomeController> {
                 child: DwListCardsTasks(repository: controller.taskRepository),
               ),
             ),
-          )
+          )*/
         ],
       ),
     );

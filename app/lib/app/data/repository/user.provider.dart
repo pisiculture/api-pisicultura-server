@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:mobile/app/data/models/user_model.dart';
+import 'package:mobile/app/data/models/user.model.dart';
 import 'package:mobile/app/data/providers/get_connect.dart';
 
 class UserApiClient extends DwGetConnect {
