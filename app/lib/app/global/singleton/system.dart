@@ -1,15 +1,22 @@
+import 'package:mobile/app/data/models/user_model.dart';
+
 class System {
   static System? _instance;
-  String _token = "";
+  String? _token;
+  User? _user;
+
+  System() {
+    _user = User();
+  }
 
   static System instance() {
-    if (_instance == null) _instance = new System();
+    _instance ??= System();
     return _instance!;
   }
 
-  getToken() {
-    return this._token;
-  }
+  getToken() => _token ?? "";
+
+  getUser() => _user;
 
   setToken(String val) {
     _token = val;

@@ -1,4 +1,4 @@
-import 'package:mobile/app/data/provider/get_connect.dart';
+import 'package:mobile/app/data/providers/get_connect.dart';
 
 class DashboardClient extends DwGetConnect {
   dashboard(id) async {
