@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/modules/home/home_binding.dart';
-import 'package:mobile/app/modules/home/home_page.dart';
+import 'package:mobile/app/modules/initial/initial.binding.dart';
+import 'package:mobile/app/modules/initial/initial.page.dart';
 import 'package:mobile/app/routes/app_routes.dart';
 
 void main() {
@@ -13,8 +13,8 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Pisiculturas',
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialBinding: HomeBinding(),
-      home: HomePage(),
+      initialBinding: InitialBinding(),
+      home: InitialPage(),
       getPages: AppPages.pages,
     ),
   );

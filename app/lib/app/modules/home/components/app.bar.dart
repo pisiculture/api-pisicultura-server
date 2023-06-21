@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/global/components/icon.button.dart';
-import 'package:mobile/app/modules/home/home_controller.dart';
+import 'package:mobile/app/modules/home/home.controller.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/theme/theme.dart';
 

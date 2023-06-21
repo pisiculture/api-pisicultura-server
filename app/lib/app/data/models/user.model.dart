@@ -3,7 +3,7 @@ class User {
   String? _name;
   String? _email;
   DateTime? _dateCreateAt;
-
+  String? _password;
   String toJson() {
     return "";
   }
@@ -12,4 +12,9 @@ class User {
   getName() => _name ?? "";
   getEmail() => _email ?? "";
   getDateCreateAt() => _dateCreateAt ?? "";
+  getPassword() => _password ?? "";
+
+  setPassword(val) => _password = val;
+
+  static fromMap(result) {}
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:mobile/app/data/models/user.model.dart';
-import 'package:mobile/app/data/providers/get_connect.dart';
+import 'package:mobile/app/data/providers/connect.dart';
 
 class UserApiClient extends DwGetConnect {
   auth(String username, String password) async {

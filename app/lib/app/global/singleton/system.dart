@@ -17,6 +17,7 @@ class System {
   getToken() => _token ?? "";
 
   getUser() => _user;
+  setUser(val) => _user = val;
 
   setToken(String val) {
     _token = val;
