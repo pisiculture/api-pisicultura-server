@@ -40,7 +40,8 @@ class UserController extends GetxController {
   }
 
   validarCampoConfirmarSenha() {
-    //if (senha.text != confirmarSenha.text)
-    return "As senha não correspondem!";
+    if (password.text != confirmPassword.text) {
+      return "As senha não correspondem!";
+    }
   }
 }
