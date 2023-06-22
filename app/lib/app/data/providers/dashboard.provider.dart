@@ -1,5 +1,5 @@
 import 'package:mobile/app/data/models/dashboard_model.dart';
-import 'package:mobile/app/data/repository/Dashboard_provider.dart';
+import 'package:mobile/app/data/repository/dashboard.provider.dart';
 
 class DashboardRepository {
   final client = DashboardClient();
