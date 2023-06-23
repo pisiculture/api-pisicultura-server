@@ -16,6 +16,7 @@ class NotificationController extends GetxController {
     if (formKey.currentState!.validate()) {
       Notifications notification = Notifications();
       //Notifications(title: title.text, description: description.text);
+      // ignore: unnecessary_null_comparison
       if (await repository.register(notification) != null) {
         Get.snackbar("Ok", 'Cadastrado com sucesso!!');
       }

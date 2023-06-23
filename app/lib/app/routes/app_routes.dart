@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:mobile/app/modules/home/home.binding.dart';
 import 'package:mobile/app/modules/home/home.page.dart';
+import 'package:mobile/app/modules/user/auth/auth.binding.dart';
+import 'package:mobile/app/modules/user/auth/auth.page.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 
 class AppPages {
@@ -9,6 +11,11 @@ class AppPages {
       name: AppRoutes.home,
       page: () => HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.auth,
+      page: () => AuthPage(),
+      binding: AuthBinding(),
     ),
   ];
 }

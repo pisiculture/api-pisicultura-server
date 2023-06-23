@@ -4,17 +4,19 @@ import 'package:mobile/app/data/models/notifications.model.dart';
 import 'package:mobile/app/global/components/list.title.dart';
 import 'package:mobile/app/global/components/scaffold.list.dart';
 import 'package:mobile/app/global/components/text.dart';
-import 'package:mobile/app/modules/home/notifications/notification.controller.dart';
+import 'package:mobile/app/modules/notifications/notification.controller.dart';
 
 class NotificationPage extends GetView<NotificationController> {
+  const NotificationPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DwScaffoldList(
       title: "Notificações",
       body: FutureBuilder<List<Notifications>>(
         future: controller.findByIdUser(),
-        // ignore: missing_return
-        builder: (_, snapshot) {
+        builder:
+            (BuildContext cx, AsyncSnapshot<List<Notifications>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           }
@@ -24,6 +26,7 @@ class NotificationPage extends GetView<NotificationController> {
             return ListView.builder(
               itemCount: lista!.length,
               itemBuilder: (context, index) {
+                // ignore: unnecessary_null_comparison
                 if (lista != null) {
                   return DwListTile(
                     title: lista[index].getTitle().toString(),
@@ -40,6 +43,8 @@ class NotificationPage extends GetView<NotificationController> {
                 }
               },
             );
+          } else {
+            return const DwText(lbl: "");
           }
         },
       ),

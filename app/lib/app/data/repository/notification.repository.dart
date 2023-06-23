@@ -1,6 +1,5 @@
 import 'package:mobile/app/data/models/notifications.model.dart';
 import 'package:mobile/app/data/providers/notification.provider.dart';
-import 'package:mobile/app/global/singleton/system.dart';
 
 class NotificationRepository {
   final NotificationApiClient apiClient = NotificationApiClient();

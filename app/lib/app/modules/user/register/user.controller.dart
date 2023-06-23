@@ -24,6 +24,7 @@ class UserController extends GetxController {
         user.setEmail(email.text);
         user.setPassword(password.text);
         User newUsuario = await repositoty.post(user);
+        // ignore: unnecessary_null_comparison
         newUsuario == null
             ? Get.snackbar("Erro:", 'Não foi possivel concluir o cadastro!')
             : _realizarLoginAposConcluirCadastro(newUsuario);
