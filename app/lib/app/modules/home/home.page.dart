@@ -5,6 +5,8 @@ import 'package:mobile/app/modules/home/components/drawer.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
 
 class HomePage extends GetView<HomeController> {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,43 +57,6 @@ class HomePage extends GetView<HomeController> {
               ),
             ),
           ),
-          /* SliverPadding(
-            padding: const EdgeInsets.only(top: 10.0, left: 5),
-            sliver: SliverToBoxAdapter(
-              child: ListTile(
-                title: const Text(
-                  'Tarefas',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                trailing: DwIconButton(
-                  icon: Icons.refresh,
-                  sizeIcon: 25,
-                  corIcon: Colors.orange,
-                  onPressed: () => controller.taskRepository.find(),
-                ),
-              ),
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.all(2),
-            sliver: SliverToBoxAdapter(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: appThemeData().backgroundColor,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                  ),
-                ),
-                height: Get.height * 0.6,
-                child: DwListCardsTasks(repository: controller.taskRepository),
-              ),
-            ),
-          )*/
         ],
       ),
     );

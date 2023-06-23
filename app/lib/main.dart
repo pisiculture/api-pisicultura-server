@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/modules/initial/initial.binding.dart';
 import 'package:mobile/app/modules/initial/initial.page.dart';
+import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/routes/app_routes.dart';
 
 void main() {
@@ -13,8 +14,9 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Pisiculturas',
       theme: ThemeData(primarySwatch: Colors.blue),
+      initialRoute: AppRoutes.initial,
       initialBinding: InitialBinding(),
-      home: InitialPage(),
+      //home: InitialPage(),
       getPages: AppPages.pages,
     ),
   );

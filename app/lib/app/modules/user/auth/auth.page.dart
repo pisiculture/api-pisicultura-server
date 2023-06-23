@@ -9,6 +9,8 @@ import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/theme/theme.dart';
 
 class AuthPage extends GetView<AuthController> {
+  const AuthPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class AuthPage extends GetView<AuthController> {
                       "assets/logo.png",
                       fit: BoxFit.contain,
                       colorBlendMode: BlendMode.color,
-                      color: appThemeData().backgroundColor,
+                      color: appThemeData().badgeTheme.backgroundColor,
                       height: 200,
                       width: 200,
                     ),

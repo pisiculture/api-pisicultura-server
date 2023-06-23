@@ -8,7 +8,7 @@ import 'package:mobile/app/theme/theme.dart';
 
 class InitialPage extends GetView<InitialController> {
   InitialPage({super.key}) {
-    //controller.auth();
+    controller.auth();
   }
 
   @override
@@ -20,7 +20,7 @@ class InitialPage extends GetView<InitialController> {
           AnimatedSplashScreen(
             animationDuration: const Duration(seconds: 1),
             splash: 'assets/logo.png',
-            nextScreen: AuthPage(),
+            nextScreen: const AuthPage(),
             splashTransition: SplashTransition.rotationTransition,
             pageTransitionType: PageTransitionType.rightToLeftWithFade,
           ),
