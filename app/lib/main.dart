@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/modules/initial/initial.binding.dart';
-import 'package:mobile/app/modules/initial/initial.page.dart';
+import 'package:mobile/app/modules/user/auth/auth.binding.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/routes/app_routes.dart';
 
@@ -12,10 +11,10 @@ void main() {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pisiculturas',
+      title: 'Pisicultura',
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: AppRoutes.initial,
-      initialBinding: InitialBinding(),
+      initialRoute: AppRoutes.auth,
+      initialBinding: AuthBinding(),
       //home: InitialPage(),
       getPages: AppPages.pages,
     ),

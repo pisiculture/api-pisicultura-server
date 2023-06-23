@@ -19,7 +19,7 @@ class AuthController extends GetxController {
             .auth(username.text, password.text, false)
             .then((value) {
           System.getInstance().setUser(value);
-          _salveDataAuthMemory(value);
+          _saveDataAuthMemory(value);
           Get.offAndToNamed(AppRoutes.home);
         }).catchError((err) {
           Get.snackbar('Erro:',
@@ -29,7 +29,7 @@ class AuthController extends GetxController {
     }
   }
 
-  _salveDataAuthMemory(user) async {
+  _saveDataAuthMemory(user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('username', user.username);
     prefs.setString('password', user.password);

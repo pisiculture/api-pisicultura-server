@@ -20,7 +20,7 @@ class DwTextFormField extends StatelessWidget {
     this.controll,
     this.colorIcon,
     this.funValidarCampo,
-    this.isNotNull,
+    this.isNotNull = false,
     this.isNumeric,
     this.isNotMinLength,
     this.onTap,
@@ -48,7 +48,8 @@ class DwTextFormField extends StatelessWidget {
       child: TextFormField(
         onTap: () => onTap,
         controller: controll,
-        keyboardType: isNumeric! ? TextInputType.number : TextInputType.name,
+        keyboardType:
+            isNumeric != null ? TextInputType.number : TextInputType.name,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
@@ -61,7 +62,7 @@ class DwTextFormField extends StatelessWidget {
           ),
         ),
         style: const TextStyle(fontSize: 16),
-        obscureText: isPassword!,
+        obscureText: isPassword != null,
         validator: (value) => validarCampo(value),
       ),
     );

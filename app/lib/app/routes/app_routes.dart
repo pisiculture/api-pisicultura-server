@@ -15,14 +15,14 @@ class AppPages {
       binding: InitialBinding(),
     ),
     GetPage(
-      name: AppRoutes.home,
-      page: () => const HomePage(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: AppRoutes.auth,
       page: () => const AuthPage(),
       binding: AuthBinding(),
     ),
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
+    )
   ];
 }

@@ -50,7 +50,7 @@ class AuthPage extends GetView<AuthController> {
                   DwButton(
                     cor: Colors.blue,
                     label: "Acessar",
-                    funOnTap: () => controller.validate(),
+                    funOnTap: controller.validate(),
                     icon: Icons.playlist_add_check_outlined,
                   ),
                   DwButtonRota(
