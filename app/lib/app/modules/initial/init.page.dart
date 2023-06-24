@@ -3,26 +3,26 @@ import 'package:mobile/app/modules/user/auth/auth.page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/modules/initial/initial.controller.dart';
+import 'package:mobile/app/modules/initial/init.controller.dart';
 import 'package:mobile/app/theme/theme.dart';
 
-class InitialPage extends GetView<InitialController> {
-  InitialPage({super.key}) {
+class InitPage extends GetView<InitController> {
+  InitPage({super.key}) {
     controller.auth();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appThemeData().backgroundColor,
+      backgroundColor: appThemeData().primaryColor,
       body: Stack(
         children: <Widget>[
           AnimatedSplashScreen(
             animationDuration: const Duration(seconds: 1),
             splash: 'assets/logo.png',
+            splashTransition: SplashTransition.sizeTransition,
+            pageTransitionType: PageTransitionType.leftToRight,
             nextScreen: const AuthPage(),
-            splashTransition: SplashTransition.rotationTransition,
-            pageTransitionType: PageTransitionType.rightToLeftWithFade,
           ),
         ],
       ),

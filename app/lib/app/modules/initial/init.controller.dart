@@ -4,7 +4,7 @@ import 'package:mobile/app/global/singleton/system.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class InitialController extends GetxController {
+class InitController extends GetxController {
   UserRepository? userRepository = Get.find<UserRepository>();
   String? username;
   String? password;

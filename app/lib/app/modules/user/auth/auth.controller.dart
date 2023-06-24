@@ -12,12 +12,22 @@ class AuthController extends GetxController {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  validate() async {
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    username.dispose();
+    password.dispose();
+    super.onClose();
+  }
+
+  validate() {
     if (formKey.currentState!.validate()) {
       if ((username.text != '') && (password.text != '')) {
-        await repositoty
-            .auth(username.text, password.text, false)
-            .then((value) {
+        repositoty.auth(username.text, password.text, false).then((value) {
           System.getInstance().setUser(value);
           _saveDataAuthMemory(value);
           Get.offAndToNamed(AppRoutes.home);

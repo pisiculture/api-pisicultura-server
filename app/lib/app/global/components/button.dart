@@ -25,7 +25,7 @@ class DwButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
       child: GestureDetector(
-        onTap: () => funOnTap,
+        onTap: () => funOnTap!(),
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 50,

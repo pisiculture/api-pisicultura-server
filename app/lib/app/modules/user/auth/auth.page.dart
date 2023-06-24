@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/global/components/button.dart';
-import 'package:mobile/app/global/components/button.rota.dart';
 import 'package:mobile/app/global/components/text.click.dart';
-import 'package:mobile/app/global/components/text.form.field.dart';
 import 'package:mobile/app/modules/user/auth/auth.controller.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 import 'package:mobile/app/theme/theme.dart';
@@ -14,7 +11,7 @@ class AuthPage extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appThemeData().backgroundColor,
+      backgroundColor: appThemeData().primaryColor,
       body: SingleChildScrollView(
         child: LayoutBuilder(
           builder: (_, contenteins) {
@@ -26,38 +23,46 @@ class AuthPage extends GetView<AuthController> {
                 children: [
                   SizedBox(height: Get.height * 0.05),
                   CircleAvatar(
+                    minRadius: 70,
                     child: Image.asset(
                       "assets/logo.png",
                       fit: BoxFit.contain,
-                      colorBlendMode: BlendMode.color,
+                      colorBlendMode: BlendMode.clear,
                       color: appThemeData().badgeTheme.backgroundColor,
                       height: 200,
                       width: 200,
                     ),
-                    minRadius: 70,
                   ),
                   const SizedBox(height: 20),
-                  DwTextFormField(
-                    controll: controller.username,
-                    label: "E-mail",
-                  ),
-                  DwTextFormField(
-                    controll: controller.password,
-                    label: "Senha de acesso",
-                    isPassword: true,
+                  Column(
+                    children: [
+                      TextFormField(
+                        controller: controller.username,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                      ),
+                      TextFormField(
+                        controller: controller.password,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
-                  DwButton(
-                    cor: Colors.blue,
-                    label: "Acessar",
-                    funOnTap: controller.validate(),
-                    icon: Icons.playlist_add_check_outlined,
+                  TextButton(
+                    child: const Text("Acessar"),
+                    onPressed: () => controller.validate(),
                   ),
-                  DwButtonRota(
-                    corButton: Colors.green,
-                    label: "Cadastrar",
-                    rotaOnPress: AppRoutes.createUser,
-                    icon: Icons.group_add_outlined,
+                  TextButton.icon(
+                    onPressed: () => Get.toNamed(AppRoutes.createUser),
+                    label: const Text("Acessar"),
+                    icon: const Icon(Icons.abc_sharp),
                   ),
                   const SizedBox(height: 10),
                   DwTextClick(
