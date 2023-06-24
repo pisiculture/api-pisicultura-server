@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/app/global/components/button.dart';
+import 'package:mobile/app/global/components/dbutton.dart';
 
 class DwButtonSalvar extends StatelessWidget {
   final Function? funOnTap;

@@ -4,7 +4,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/modules/initial/init.controller.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 class InitPage extends GetView<InitController> {
   InitPage({super.key}) {
@@ -14,7 +13,7 @@ class InitPage extends GetView<InitController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appThemeData().primaryColor,
+      backgroundColor: ThemeData().primaryColor,
       body: Stack(
         children: <Widget>[
           AnimatedSplashScreen(

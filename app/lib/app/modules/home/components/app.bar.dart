@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:mobile/app/global/components/icon.button.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
 import 'package:mobile/app/routes/app_pages.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 // ignore: must_be_immutable
 class DwAppBarHome extends StatelessWidget {
@@ -16,7 +15,7 @@ class DwAppBarHome extends StatelessWidget {
     return PreferredSize(
         preferredSize: const Size(1, 1),
         child: AppBar(
-          backgroundColor: appThemeData().appBarTheme.backgroundColor,
+          backgroundColor: ThemeData().appBarTheme.backgroundColor,
           actions: <Widget>[
             Positioned(
               child: Obx(
@@ -30,8 +29,8 @@ class DwAppBarHome extends StatelessWidget {
                   sizeIcon: controller!.notifications.value > 0 ? 26 : 24,
                   onPressed: () => Get.defaultDialog(
                     title: 'Alerta',
-                    backgroundColor: appThemeData().dialogBackgroundColor,
-                    buttonColor: appThemeData().disabledColor,
+                    backgroundColor: ThemeData().dialogBackgroundColor,
+                    buttonColor: ThemeData().disabledColor,
                     textConfirm: 'Visualizar',
                     textCancel: 'Cancelar',
                     middleText:

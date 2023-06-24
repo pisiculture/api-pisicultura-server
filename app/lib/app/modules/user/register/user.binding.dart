@@ -3,10 +3,10 @@ import 'package:mobile/app/data/providers/user.provider.dart';
 import 'package:mobile/app/data/repository/user.repository.dart';
 import 'package:mobile/app/modules/user/register/user.controller.dart';
 
-class UserBinding implements Bindings {
+class UserRegisterBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => UserController());
+    Get.lazyPut(() => UserRegisterController());
     Get.lazyPut(() => UserRepository());
     Get.lazyPut(() => UserApiClient());
   }

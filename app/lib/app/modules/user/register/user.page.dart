@@ -5,7 +5,9 @@ import 'package:mobile/app/global/components/scaffold.crud.dart';
 import 'package:mobile/app/global/components/text.form.field.dart';
 import 'package:mobile/app/modules/user/register/user.controller.dart';
 
-class RegisterUserPage extends GetView<UserController> {
+class UserRegisterPage extends GetView<UserRegisterController> {
+  const UserRegisterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DwScaffoldCrud(

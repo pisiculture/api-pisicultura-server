@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:mobile/app/global/singleton/system.dart';
 import 'package:mobile/app/modules/home/components/button.drawer.dart';
 import 'package:mobile/app/routes/app_pages.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 class HomeItemDto {
   String? title;
@@ -70,7 +69,7 @@ class DJDrawer extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(
-                color: appThemeData().appBarTheme.backgroundColor,
+                color: ThemeData().appBarTheme.backgroundColor,
               ),
               currentAccountPicture: const Icon(Icons.account_circle, size: 80),
               accountName: Text(

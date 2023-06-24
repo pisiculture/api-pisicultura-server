@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/global/components/text.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 import 'icon.button.dart';
 
@@ -59,7 +58,7 @@ class DwListTileConfirmm extends StatelessWidget {
       padding: const EdgeInsets.all(1.5),
       child: Container(
         decoration: BoxDecoration(
-          color: appThemeData().cardTheme.color,
+          color: ThemeData().cardTheme.color,
           borderRadius: BorderRadius.circular(5),
         ),
         child: ListTile(
@@ -74,7 +73,7 @@ class DwListTileConfirmm extends StatelessWidget {
           trailing: DwIconButton(
             icon: Icons.contact_support_outlined,
             sizeIcon: 25,
-            corIcon: appThemeData().bottomAppBarColor,
+            corIcon: ThemeData().bottomAppBarColor,
             onPressed: () => selected(),
           ),
         ),

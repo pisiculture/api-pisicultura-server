@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/app/global/components/text.click.dart';
 import 'package:mobile/app/modules/user/auth/auth.controller.dart';
 import 'package:mobile/app/routes/app_pages.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 class AuthPage extends GetView<AuthController> {
   const AuthPage({super.key});
@@ -11,7 +9,7 @@ class AuthPage extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appThemeData().primaryColor,
+      backgroundColor: ThemeData().primaryColor,
       body: SingleChildScrollView(
         child: LayoutBuilder(
           builder: (_, contenteins) {
@@ -24,11 +22,12 @@ class AuthPage extends GetView<AuthController> {
                   SizedBox(height: Get.height * 0.05),
                   CircleAvatar(
                     minRadius: 70,
+                    backgroundColor: ThemeData().primaryColor,
                     child: Image.asset(
                       "assets/logo.png",
                       fit: BoxFit.contain,
                       colorBlendMode: BlendMode.clear,
-                      color: appThemeData().badgeTheme.backgroundColor,
+                      color: ThemeData().badgeTheme.backgroundColor,
                       height: 200,
                       width: 200,
                     ),
@@ -59,17 +58,30 @@ class AuthPage extends GetView<AuthController> {
                     child: const Text("Acessar"),
                     onPressed: () => controller.validate(),
                   ),
-                  TextButton.icon(
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.green),
+                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.hovered))
+                            return Colors.blue.withOpacity(0.04);
+                          if (states.contains(MaterialState.focused) ||
+                              states.contains(MaterialState.pressed))
+                            return Colors.blue.withOpacity(0.12);
+                          return null; // Defer to the widget's default.
+                        },
+                      ),
+                    ),
                     onPressed: () => Get.toNamed(AppRoutes.createUser),
-                    label: const Text("Acessar"),
-                    icon: const Icon(Icons.abc_sharp),
+                    child: const Text("Cadastrar"),
                   ),
                   const SizedBox(height: 10),
-                  DwTextClick(
-                    lbl: "Esqueceu sua senha?",
-                    fun: controller.sendmail,
-                    fontSize: 18,
-                    cor: Colors.white,
+                  const Text(
+                    "Esqueceu sua senha?",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),

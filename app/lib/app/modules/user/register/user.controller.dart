@@ -6,7 +6,7 @@ import 'package:mobile/app/data/repository/user.repository.dart';
 import 'package:mobile/app/global/singleton/system.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 
-class UserController extends GetxController {
+class UserRegisterController extends GetxController {
   final repositoty = Get.find<UserRepository>();
 
   TextEditingController name = TextEditingController();

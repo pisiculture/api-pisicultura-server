@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/global/components/icon.button.dart';
 import 'package:mobile/app/global/components/text.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 class DwListTile extends StatefulWidget {
   final String? title;
@@ -74,7 +73,7 @@ class _DwListTileState extends State<DwListTile> {
       padding: const EdgeInsets.all(1.5),
       child: Container(
         decoration: BoxDecoration(
-          color: appThemeData().cardTheme.color,
+          color: ThemeData().cardTheme.color,
           borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(20),
             topLeft: Radius.circular(20),

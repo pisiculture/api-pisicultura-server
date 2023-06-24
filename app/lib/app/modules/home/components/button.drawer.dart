@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mobile/app/theme/theme.dart';
 
 class DrawerListTile extends StatelessWidget {
   final String? title, svgSrc;
@@ -14,7 +13,7 @@ class DrawerListTile extends StatelessWidget {
       padding: const EdgeInsets.all(1.0),
       child: Container(
         decoration: BoxDecoration(
-          color: appThemeData().buttonTheme.colorScheme?.primary,
+          color: ThemeData().buttonTheme.colorScheme?.primary,
           borderRadius: BorderRadius.circular(5),
           border: Border.all(width: 1),
         ),

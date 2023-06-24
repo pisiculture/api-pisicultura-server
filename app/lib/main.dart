@@ -12,7 +12,12 @@ void main() {
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pisicultura',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.lightBlue,
+        buttonTheme: const ButtonThemeData(
+          buttonColor: Colors.green,
+        ),
+      ),
       initialRoute: AppRoutes.auth,
       initialBinding: InitBinding(),
       //home: InitialPage(),

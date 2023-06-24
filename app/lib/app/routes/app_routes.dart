@@ -5,6 +5,8 @@ import 'package:mobile/app/modules/initial/init.binding.dart';
 import 'package:mobile/app/modules/initial/init.page.dart';
 import 'package:mobile/app/modules/user/auth/auth.binding.dart';
 import 'package:mobile/app/modules/user/auth/auth.page.dart';
+import 'package:mobile/app/modules/user/register/user.binding.dart';
+import 'package:mobile/app/modules/user/register/user.page.dart';
 import 'package:mobile/app/routes/app_pages.dart';
 
 class AppPages {
@@ -23,6 +25,11 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.createUser,
+      page: () => const UserRegisterPage(),
+      binding: UserRegisterBinding(),
     )
   ];
 }
