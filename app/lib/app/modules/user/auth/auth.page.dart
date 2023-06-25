@@ -59,20 +59,6 @@ class AuthPage extends GetView<AuthController> {
                     onPressed: () => controller.validate(),
                   ),
                   TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.green),
-                      overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.hovered))
-                            return Colors.blue.withOpacity(0.04);
-                          if (states.contains(MaterialState.focused) ||
-                              states.contains(MaterialState.pressed))
-                            return Colors.blue.withOpacity(0.12);
-                          return null; // Defer to the widget's default.
-                        },
-                      ),
-                    ),
                     onPressed: () => Get.toNamed(AppRoutes.createUser),
                     child: const Text("Cadastrar"),
                   ),
