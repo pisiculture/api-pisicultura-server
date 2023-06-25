@@ -1,3 +1,4 @@
+const { UserModel: User } = require("../models/user");
 const bcrypt = require("bcrypt");
 
 module.exports = {
@@ -24,7 +25,7 @@ module.exports = {
         }
 
         // check if user exists
-        const userExists = await User.findOne({ email: email });
+        const userExists = await UserModel.findOne({ email: email });
 
         if (userExists) {
             return res.status(422).json({ msg: "Por favor, utilize outro e-mail!" });
@@ -35,7 +36,7 @@ module.exports = {
         const passwordHash = await bcrypt.hash(password, salt);
 
         // create user
-        const user = new User({
+        const user = new UserModel({
             name,
             email,
             passwordHash,
@@ -63,7 +64,7 @@ module.exports = {
         }
 
         // check if user exists
-        const user = await User.findOne({ email: email });
+        const user = await UserModel.findOne({ email: email });
 
         if (!user) {
             return res.status(404).json({ msg: "Usuário não encontrado!" });
