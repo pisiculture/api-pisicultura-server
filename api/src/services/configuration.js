@@ -2,11 +2,8 @@ const { Configuration: ConfigurationModel } = require("../models/configuration")
 
 module.exports = {
     async update(id, vo) {
-
         await ConfigurationModel.findOneAndUpdate({ id: id }, vo);
-
         console.log(ConfigurationModel.find({ id: id }))
-
     },
 
     async createDefault() {
