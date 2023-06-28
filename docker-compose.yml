@@ -4,7 +4,6 @@ services:
     gateway:
       build:
         context: ./gateway
-        target: dev      
       command: npm start
       ports:
         - 3000:3000
@@ -17,8 +16,7 @@ services:
 
     api:
       build: 
-         context: ./api
-         target: dev
+        context: ./api
       command: npm start
       ports:
         - 3001:3001
@@ -32,10 +30,16 @@ services:
     ws:
       build:
         context: ./ws
-        target: dev
       command: npm start
       ports:
         - 3002:3002
+      depends_on:
+        - db
+      volumes:
+        - ./ws:/user/ws
+      links:
+        - db
+
     db:
       image: mongo
       restart: unless-stopped

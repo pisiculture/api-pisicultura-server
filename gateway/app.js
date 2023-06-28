@@ -19,9 +19,9 @@ const authService = require('./src/services/auth-token');
 function selectProxyHost(req, res) {
     authService.checkToken(req, res);
     if (req.path.startsWith('/api'))
-        return 'http://localhost:3001/api';
+        return 'http://api/';
     else if (req.path.startsWith('/ws'))
-        return 'http://localhost:3002/';
+        return 'http://ws/';
 }
 
 app.use((req, res, next) => {

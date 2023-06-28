@@ -1,4 +1,4 @@
-FROM  node:alpine
+FROM node:alpine
 
 WORKDIR /user/gatewey
 
@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "nmp", "start" ]
+CMD [ "npm", "start" ]
