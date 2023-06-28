@@ -31,6 +31,6 @@ app.use((req, res, next) => {
 });
 
 
-app.listen(8080, () => {
+app.listen(3000, () => {
     console.log('API Gateway running!');
 });

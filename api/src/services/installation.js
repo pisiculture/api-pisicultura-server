@@ -1,6 +1,5 @@
 const { Installation: InstallationModel } = require('../models/installation');
 
-const userService = require("./auth");
 const configurationService = require('./configuration');
 const permissionsService = require("./permission");
 

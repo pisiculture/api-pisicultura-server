@@ -1,19 +1,51 @@
-version: '3.8'
+version: "3.8"
+
 services:
+    gateway:
+      build:
+        context: ./gateway
+        target: dev      
+      command: npm start
+      ports:
+        - 3000:3000
+      depends_on:
+        - db
+      volumes:
+        - ./gateway:/user/gateway
+      links:
+        - db
 
-  dbtask: 
-    image: mongo
-    container_name: dbapp
-    restart: always
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME:prod
-      - MONGO_INITDB_ROOT_PASSWORD:bBsAQDnZxx6xC
-    ports:
-      - 27016:27017 
-      - 28016:28017 
-    networks:
-      - app-network
+    api:
+      build: 
+         context: ./api
+         target: dev
+      command: npm start
+      ports:
+        - 3001:3001
+      depends_on:
+        - db
+      volumes:
+        - ./api:/user/api
+      links:
+        - db
 
-networks:
-  app-network:
-    driver: bridge
+    ws:
+      build:
+        context: ./ws
+        target: dev
+      command: npm start
+      ports:
+        - 3002:3002
+    db:
+      image: mongo
+      restart: unless-stopped
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=root
+      ports:
+        - 27017:27017
+      volumes:
+        - db:/data/db
+  
+volumes:
+  db:

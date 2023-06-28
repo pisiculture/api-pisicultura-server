@@ -11,7 +11,7 @@ app.use("/", routers);
 const conn = require('./src/db/coonDB');
 conn();
 
-const server = app.listen(process.env.PORT || 3000, () => {
+const server = app.listen(process.env.PORT || 3002, () => {
   console.log(`App Express is running!`);
 })
 

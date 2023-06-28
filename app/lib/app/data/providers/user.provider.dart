@@ -6,6 +6,8 @@ import 'package:mobile/app/data/providers/connect.dart';
 class UserApiClient extends DwGetConnect {
   auth(String username, String password) async {
     try {
+      print(username);
+      print(password);
       final response = await post(
           '$baseUrl/login', {"email": username, "password": password});
       return response.statusCode == 200 ? jsonDecode(response.body) : null;
