@@ -21,7 +21,7 @@ class DrawerListTile extends StatelessWidget {
           onTap: () => press,
           horizontalTitleGap: 0.0,
           hoverColor: Colors.amber,
-          leading: SvgPicture.string(
+          leading: SvgPicture.asset(
             svgSrc!,
             height: 24,
           ),

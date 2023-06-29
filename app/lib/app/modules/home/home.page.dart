@@ -5,7 +5,9 @@ import 'package:mobile/app/modules/home/components/drawer.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
 
 class HomePage extends GetView<HomeController> {
-  const HomePage({super.key});
+  HomePage({super.key}) {
+    controller.onInit();
+  }
 
   @override
   Widget build(BuildContext context) {

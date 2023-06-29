@@ -9,10 +9,12 @@ class HomeController extends GetxController {
   RxInt notifications = 0.obs;
   final dashboardRepository = Get.find<DashboardRepository>();
 
-  final channel = IOWebSocketChannel.connect('ws://localhost:3000');
+  final channel = IOWebSocketChannel.connect('ws://192.168.0.121:3002');
 
   HomeController() {
     channel.stream.listen((message) {
+      print(message);
+
       channel.sink.close(status.goingAway);
     });
     channel.sink
