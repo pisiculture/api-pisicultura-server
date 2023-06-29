@@ -25,17 +25,20 @@ class AuthController extends GetxController {
   }
 
   validate() {
-    if (formKey.currentState!.validate()) {
-      if ((email.text != '') && (password.text != '')) {
-        repositoty.auth(email.text, password.text).then((value) {
+    if ((email.text != '') && (password.text != '')) {
+      repositoty.auth(email.text, password.text).then((value) {
+        if (value != null) {
           System.getInstance().setUser(value);
           _saveDataAuthMemory(value, password.text);
           Get.offAndToNamed(AppRoutes.home);
-        }).catchError((err) {
+        } else {
           Get.snackbar('Erro:',
               'Email ou senha incorreto(s), verifique e tente novamente');
-        });
-      }
+        }
+      }).catchError((err) {
+        Get.snackbar('Erro:',
+            'Email ou senha incorreto(s), verifique e tente novamente');
+      });
     }
   }
 

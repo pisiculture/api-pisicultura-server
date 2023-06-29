@@ -1,76 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:mobile/app/global/singleton/system.dart';
-import 'package:mobile/app/modules/home/components/button.drawer.dart';
-import 'package:mobile/app/routes/app_pages.dart';
+import 'package:mobile/responsive.dart';
 
-class HomeItemDto {
-  String? title;
-  String? svgSrc;
-  Function? press;
-
-  HomeItemDto({this.title, this.svgSrc, this.press});
+class MenuModel {
+  String icon;
+  String title;
+  MenuModel({required this.icon, required this.title});
 }
 
-class DJDrawer extends StatelessWidget {
-  final List<HomeItemDto>? itens;
+class DDrawer extends StatefulWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
-  final _itensMenu = [
-    HomeItemDto(
-      title: "Dashboard",
-      svgSrc: "assets/icons/menu_dashbord.svg",
-      press: () => Get.toNamed(AppRoutes.home),
-    ),
-    /*
-      HomeItemDto(
-        title: "Instalações",
-        svgSrc: "assets/icons/bar-chart.svg",
-        press: () => Get.toNamed(Route.INSTALLATION),
-      ),
-      HomeItemDto(
-        title: "Task",
-        svgSrc: "assets/icons/menu_task.svg",
-        press: () => Get.toNamed(Routes.TASK),
-      ),
-      HomeItemDto(
-        title: "Store",
-        svgSrc: "assets/icons/menu_store.svg",
-        press: () => Get.toNamed(Routes.STORE),
-      ),
-      HomeItemDto(
-        title: "Notification",
-        svgSrc: "assets/icons/menu_notification.svg",
-        press: () => Get.toNamed(Routes.NOTIFICATIONS),
-      ),
-      HomeItemDto(
-        title: "Profile",
-        svgSrc: "assets/icons/menu_profile.svg",
-        press: () => Get.toNamed(Routes.PROFILE),
-      ),
-      HomeItemDto(
-        title: "Settings",
-        svgSrc: "assets/icons/menu_setting.svg",
-        press: () => Get.toNamed(Routes.CONFIG),
-      ),
-      HomeItemDto(
-        title: "Logout",
-        svgSrc: "assets/icons/logout.svg",
-        press: () => logout,
-      ),*/
+  const DDrawer({super.key, required this.scaffoldKey});
+
+  @override
+  _MenuState createState() => _MenuState();
+}
+
+class _MenuState extends State<DDrawer> {
+  List<MenuModel> menu = [
+    MenuModel(icon: 'assets/icons/home.svg', title: "Inicio"),
+    MenuModel(icon: 'assets/icons/profile.svg', title: "Perfil"),
+    MenuModel(icon: 'assets/icons/setting.svg', title: "Configurações"),
+    MenuModel(icon: 'assets/icons/history.svg', title: "Agendamentos"),
+    MenuModel(icon: 'assets/icons/signout.svg', title: "Sair"),
   ];
 
-  DJDrawer({super.key, this.itens});
+  int selected = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      decoration: BoxDecoration(
+          border: Border(
+            right: BorderSide(
+              color: Colors.grey[800]!,
+              width: 1,
+            ),
+          ),
+          color: const Color(0xFF171821)),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: SingleChildScrollView(
+            child: Column(
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: ThemeData().appBarTheme.backgroundColor,
-              ),
               currentAccountPicture: const Icon(Icons.account_circle, size: 80),
               accountName: Text(
                 System.getInstance().getUser().getName(),
@@ -81,18 +57,53 @@ class DJDrawer extends StatelessWidget {
                 style: const TextStyle(fontSize: 14),
               ),
             ),
-            Column(
-              children: List.generate(
-                _itensMenu.length,
-                (index) => DrawerListTile(
-                  title: _itensMenu[index].title,
-                  svgSrc: _itensMenu[index].svgSrc,
-                  press: _itensMenu[index].press,
+            SizedBox(
+              height: Responsive.isMobile(context) ? 40 : 80,
+            ),
+            for (var i = 0; i < menu.length; i++)
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.symmetric(vertical: 5),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(6.0),
+                  ),
+                  color: selected == i
+                      ? Theme.of(context).primaryColor
+                      : Colors.transparent,
+                ),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selected = i;
+                    });
+                    widget.scaffoldKey.currentState!.closeDrawer();
+                  },
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 13, vertical: 7),
+                        child: SvgPicture.asset(
+                          menu[i].icon,
+                          color: selected == i ? Colors.black : Colors.grey,
+                        ),
+                      ),
+                      Text(
+                        menu[i].title,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: selected == i ? Colors.black : Colors.grey,
+                            fontWeight: selected == i
+                                ? FontWeight.w600
+                                : FontWeight.normal),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            )
           ],
-        ),
+        )),
       ),
     );
   }

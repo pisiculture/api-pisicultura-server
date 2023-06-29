@@ -13,7 +13,7 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Pisicultura',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.grey,
         buttonTheme: const ButtonThemeData(
           buttonColor: Colors.green,
         ),
