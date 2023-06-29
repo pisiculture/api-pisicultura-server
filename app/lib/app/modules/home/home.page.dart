@@ -21,11 +21,12 @@ class HomePage extends GetView<HomeController> {
       key: _scaffoldKey,
       drawer: !Responsive.isDesktop(context)
           ? SizedBox(width: 250, child: DDrawer(scaffoldKey: _scaffoldKey))
-          : null,
+          : DDrawer(scaffoldKey: _scaffoldKey),
       endDrawer: Responsive.isMobile(context)
           ? SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
-              child: Container())
+              child: SizedBox(
+                  width: 250, child: DDrawer(scaffoldKey: _scaffoldKey)))
           : null,
       body: SafeArea(
         child: Row(
@@ -50,10 +51,34 @@ class HomePage extends GetView<HomeController> {
                         SizedBox(
                           height: Responsive.isMobile(context) ? 5 : 18,
                         ),
+                        SizedBox(
+                          height: 35,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              if (!Responsive.isDesktop(context))
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: InkWell(
+                                    onTap: () =>
+                                        _scaffoldKey.currentState!.openDrawer(),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(3.0),
+                                      child: Icon(
+                                        Icons.menu,
+                                        color: Colors.grey,
+                                        size: 25,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                        _height(context),
                         const ActivityDetailsCard(),
                         _height(context),
-                        LineChartCard(),
-                        _height(context),
+                        LineChartCard()
                       ],
                     ),
                   ),
