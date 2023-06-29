@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class InitController extends GetxController {
   UserRepository? userRepository = Get.find<UserRepository>();
-  String? username;
+  String? email;
   String? password;
 
   bool? ehPrimeiroLogin;
@@ -16,7 +16,7 @@ class InitController extends GetxController {
 
     if (ehPrimeiroLogin!) {
       System.getInstance()
-          .setUser(await userRepository?.auth(username!, password!));
+          .setUser(await userRepository?.auth(email!, password!));
       if (System.getInstance().getUser() != null) {
         Get.offAndToNamed(AppRoutes.home);
       }
@@ -25,8 +25,8 @@ class InitController extends GetxController {
 
   Future<bool> _findDataUserMemory() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    username = prefs.getString('username') ?? '';
+    email = prefs.getString('email') ?? '';
     password = prefs.getString('password') ?? '';
-    return (username != '') && (password != '');
+    return (email != '') && (password != '');
   }
 }

@@ -29,7 +29,7 @@ class AuthController extends GetxController {
       if ((email.text != '') && (password.text != '')) {
         repositoty.auth(email.text, password.text).then((value) {
           System.getInstance().setUser(value);
-          _saveDataAuthMemory(value);
+          _saveDataAuthMemory(value, password.text);
           Get.offAndToNamed(AppRoutes.home);
         }).catchError((err) {
           Get.snackbar('Erro:',
@@ -39,11 +39,11 @@ class AuthController extends GetxController {
     }
   }
 
-  _saveDataAuthMemory(user) async {
+  _saveDataAuthMemory(user, password) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('email', user.email);
-    prefs.setString('password', user.password);
-    prefs.setString('token', user.token);
+    prefs.setString('email', user.getEmail());
+    prefs.setString('password', password);
+    prefs.setString('token', user.getToken());
   }
 
   sendmail() {

@@ -9,11 +9,13 @@ class UserSession {
   getName() => _name ?? "";
   getEmail() => _email ?? "";
   getPassword() => _password ?? "";
+  getToken() => _token ?? "";
 
   setId(val) => _id = val;
   setName(val) => _name = val;
   setEmail(val) => _email = val;
   setPassword(val) => _password = val;
+  setToken(val) => _token = val;
 
   UserSession();
 

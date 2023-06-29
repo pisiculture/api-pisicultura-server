@@ -18,7 +18,7 @@ void main() {
           buttonColor: Colors.green,
         ),
       ),
-      initialRoute: AppRoutes.auth,
+      initialRoute: AppRoutes.initial,
       initialBinding: InitBinding(),
       //home: InitialPage(),
       getPages: AppPages.pages,
