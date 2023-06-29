@@ -4,7 +4,11 @@ class DButton extends StatelessWidget {
   final String? caption;
   final Function()? onTap;
 
-  const DButton({super.key, required this.onTap, this.caption});
+  const DButton({
+    super.key,
+    required this.onTap,
+    required this.caption,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +19,12 @@ class DButton extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
           color: Colors.black,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(25),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            "Acessar",
-            style: TextStyle(
+            caption!,
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,

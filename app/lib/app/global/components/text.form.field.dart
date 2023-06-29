@@ -22,7 +22,7 @@ class DwTextFormField extends StatelessWidget {
     this.funValidarCampo,
     this.isNotNull = false,
     this.isNumeric,
-    this.isNotMinLength,
+    this.isNotMinLength = false,
     this.onTap,
   });
 
@@ -51,15 +51,16 @@ class DwTextFormField extends StatelessWidget {
         keyboardType:
             isNumeric != null ? TextInputType.number : TextInputType.name,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
           ),
-          fillColor: Colors.amberAccent,
-          // prefixIcon: Icon(icon) ?? Icon(Icons.home_filled, color: colorIcon),
-          labelText: label ?? 'Sem descrição',
-          labelStyle: const TextStyle(
-            fontSize: 18,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade400),
           ),
+          fillColor: Colors.grey.shade200,
+          filled: true,
+          hintText: label,
+          hintStyle: TextStyle(color: Colors.grey[500]),
         ),
         style: const TextStyle(fontSize: 16),
         obscureText: isPassword != null,

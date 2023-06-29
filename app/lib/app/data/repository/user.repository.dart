@@ -11,9 +11,8 @@ class UserRepository {
     return user != null ? UserSession.fromJson(user) : null;
   }
 
-  Future<UserSession?> post(UserSession user) async {
-    user.setPassword(textToMd5(user.getPassword()));
-    var result = await apiClient?.register(user);
+  Future<UserSession?> create(UserSession user) async {
+    var result = await apiClient?.create(user);
     return result != null ? UserSession.fromJson(result) : null;
   }
 

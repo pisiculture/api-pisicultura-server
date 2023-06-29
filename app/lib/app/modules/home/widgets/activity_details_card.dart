@@ -16,12 +16,8 @@ class ActivityDetailsCard extends StatelessWidget {
 
   final List<HealthModel> healthDetails = const [
     HealthModel(
-        icon: 'assets/icons/burn.svg', value: "305", title: "Calories burned"),
-    HealthModel(
-        icon: 'assets/icons/steps.svg', value: "10,983", title: "Steps"),
-    HealthModel(
-        icon: 'assets/icons/distance.svg', value: "7km", title: "Distance"),
-    HealthModel(icon: 'assets/icons/sleep.svg', value: "7h48m", title: "Sleep"),
+        icon: 'assets/icons/burn.svg', value: "32.5", title: "Temperatura C"),
+    HealthModel(icon: 'assets/icons/steps.svg', value: "7.23", title: "PH"),
   ];
 
   @override
@@ -54,9 +50,10 @@ class ActivityDetailsCard extends StatelessWidget {
               Text(
                 healthDetails[i].title,
                 style: const TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.normal),
+                  fontSize: 13,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                ),
               ),
             ],
           ),

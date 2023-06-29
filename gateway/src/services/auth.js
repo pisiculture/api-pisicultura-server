@@ -28,7 +28,7 @@ module.exports = {
     },
 
     async create(json) {
-        const { name, email, password, confirmpassword } = json;
+        const { name, email, password } = json;
 
         if (!name)
             throw new Error("O nome é obrigatório!");
@@ -36,9 +36,7 @@ module.exports = {
             throw new Error("O email é obrigatório!");
         if (!password)
             throw new Error("A senha é obrigatória!");
-        if (password != confirmpassword)
-            throw new Error("A senha e a confirmação precisam ser iguais!");
-
+       
         const userExists = await UserModel.findOne({ email: email });
         if (userExists)
             throw new Error("Por favor, utilize outro e-mail!");

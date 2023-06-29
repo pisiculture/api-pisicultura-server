@@ -78,6 +78,8 @@ class HomePage extends GetView<HomeController> {
                         _height(context),
                         const ActivityDetailsCard(),
                         _height(context),
+                        LineChartCard(),
+                        _height(context),
                         LineChartCard()
                       ],
                     ),

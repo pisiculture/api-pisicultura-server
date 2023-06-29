@@ -20,7 +20,7 @@ class DwScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ThemeData().appBarTheme.backgroundColor,
-        title: DwText(lbl: (title ?? '') + '        '),
+        title: DwText(lbl: '${title ?? ''}        '),
         key: chave,
       ),
       body: body,

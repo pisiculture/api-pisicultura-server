@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class UserSession {
   String? _id;
   String? _name;
@@ -26,12 +28,12 @@ class UserSession {
     _token = json['token'];
   }
 
-  Map<String, dynamic> toJson() {
+  String toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = _id;
     data['name'] = _name;
     data['email'] = _email;
     data['token'] = _token;
-    return data;
+    return jsonEncode(data);
   }
 }

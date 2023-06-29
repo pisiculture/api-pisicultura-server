@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:mobile/app/data/base_url.dart';
 import 'package:mobile/app/data/models/user.model.dart';
 import 'package:mobile/app/data/providers/connect.dart';
@@ -13,10 +15,16 @@ class UserApiClient extends DwGetConnect {
     }
   }
 
-  register(UserSession user) async {
+  create(UserSession user) async {
     try {
-      final response = await send('$baseUrl/user', user.toJson().toString());
-      return response.statusCode == 201 ? response.body : null;
+      final response = await send('$baseUrlApp/auth/register', user.toJson());
+      if (response.statusCode == 201) {
+        return response.body;
+      } else {
+        final j = jsonDecode(response.body);
+        print(j['msg'].toString());
+        throw Exception(j["msg"]);
+      }
     } catch (e) {
       print(e);
     }

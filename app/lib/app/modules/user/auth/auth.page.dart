@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile/app/global/components/button.dart';
 import 'package:mobile/app/global/components/text.field.dart';
 import 'package:mobile/app/modules/user/auth/auth.controller.dart';
+import 'package:mobile/app/routes/app_pages.dart';
 
 class AuthPage extends GetView<AuthController> {
   const AuthPage({super.key});
@@ -43,7 +44,6 @@ class AuthPage extends GetView<AuthController> {
                 ),
 
                 const SizedBox(height: 10),
-
                 // forgot password?
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -71,13 +71,16 @@ class AuthPage extends GetView<AuthController> {
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                     const SizedBox(width: 4),
-                    const Text(
-                      'Registrar-se',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppRoutes.createUser),
+                      child: const Text(
+                        'Registrar-se',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 )
               ],

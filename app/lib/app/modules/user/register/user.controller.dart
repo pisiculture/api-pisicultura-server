@@ -16,18 +16,20 @@ class UserRegisterController extends GetxController {
 
   final formKey = GlobalKey<FormState>();
 
-  cadastrarUsuario() async {
+  create() async {
     if (formKey.currentState!.validate()) {
       if (password.text == confirmPassword.text) {
         UserSession user = UserSession();
         user.setName(name.text);
         user.setEmail(email.text);
         user.setPassword(password.text);
-        UserSession? newUsuario = await repositoty.post(user);
-        // ignore: unnecessary_null_comparison
-        newUsuario == null
-            ? Get.snackbar("Erro:", 'Não foi possivel concluir o cadastro!')
-            : _realizarLoginAposConcluirCadastro(newUsuario);
+
+        try {
+          UserSession? newUsuario = await repositoty.create(user);
+          _realizarLoginAposConcluirCadastro(newUsuario!);
+        } catch (e) {
+          Get.snackbar("Erro:", e.toString());
+        } // ignore: unnecessary_null_comparison
       } else {
         Get.snackbar("Erro:", 'As senha não correspondem!');
       }
