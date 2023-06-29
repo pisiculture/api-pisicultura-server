@@ -3,10 +3,10 @@ import 'package:mobile/app/data/models/user.model.dart';
 class System {
   static System? _instance;
   String? _token;
-  User? _user;
+  UserSession? _user;
 
   System() {
-    _user = User();
+    _user = UserSession();
   }
 
   static System getInstance() {

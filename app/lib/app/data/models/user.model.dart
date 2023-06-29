@@ -1,25 +1,35 @@
-class User {
+class UserSession {
   String? _id;
   String? _name;
   String? _email;
-  DateTime? _dateCreateAt;
   String? _password;
-
-  String toJson() {
-    return "";
-  }
+  String? _token;
 
   getId() => _id ?? "";
   getName() => _name ?? "";
   getEmail() => _email ?? "";
-  getDateCreateAt() => _dateCreateAt ?? "";
   getPassword() => _password ?? "";
 
   setId(val) => _id = val;
   setName(val) => _name = val;
   setEmail(val) => _email = val;
-  setDateCreateAt(val) => _dateCreateAt = val;
   setPassword(val) => _password = val;
 
-  static fromMap(result) {}
+  UserSession();
+
+  UserSession.fromJson(Map<String, dynamic> json) {
+    _id = json['id'];
+    _name = json['name'];
+    _email = json['email'];
+    _token = json['token'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = _id;
+    data['name'] = _name;
+    data['email'] = _email;
+    data['token'] = _token;
+    return data;
+  }
 }

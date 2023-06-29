@@ -19,11 +19,11 @@ class UserRegisterController extends GetxController {
   cadastrarUsuario() async {
     if (formKey.currentState!.validate()) {
       if (password.text == confirmPassword.text) {
-        User user = User();
+        UserSession user = UserSession();
         user.setName(name.text);
         user.setEmail(email.text);
         user.setPassword(password.text);
-        User newUsuario = await repositoty.post(user);
+        UserSession? newUsuario = await repositoty.post(user);
         // ignore: unnecessary_null_comparison
         newUsuario == null
             ? Get.snackbar("Erro:", 'Não foi possivel concluir o cadastro!')
@@ -34,7 +34,7 @@ class UserRegisterController extends GetxController {
     }
   }
 
-  _realizarLoginAposConcluirCadastro(User user) {
+  _realizarLoginAposConcluirCadastro(UserSession user) {
     Get.snackbar('Sucesso!!', 'Seu cadastro foi realizado com sucesso!!');
     System.getInstance().setUser(user);
     Get.offAndToNamed(AppRoutes.home);

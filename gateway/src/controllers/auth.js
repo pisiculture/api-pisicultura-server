@@ -12,7 +12,7 @@ module.exports = {
 
     async auth(req, res) {
         try {
-            res.status(200).json({ msg: "Autenticação realizada com sucesso!", token: await service.auth(req.body) });
+            res.status(200).json(await service.auth(req.body));
         } catch (error) {
             res.status(500).json({ msg: error.message });
         }

@@ -9,7 +9,7 @@ class AuthController extends GetxController {
   final repositoty = Get.find<UserRepository>();
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController username = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   @override
@@ -19,15 +19,15 @@ class AuthController extends GetxController {
 
   @override
   void onClose() {
-    username.dispose();
+    email.dispose();
     password.dispose();
     super.onClose();
   }
 
   validate() {
     if (formKey.currentState!.validate()) {
-      if ((username.text != '') && (password.text != '')) {
-        repositoty.auth(username.text, password.text, false).then((value) {
+      if ((email.text != '') && (password.text != '')) {
+        repositoty.auth(email.text, password.text).then((value) {
           System.getInstance().setUser(value);
           _saveDataAuthMemory(value);
           Get.offAndToNamed(AppRoutes.home);
@@ -41,7 +41,7 @@ class AuthController extends GetxController {
 
   _saveDataAuthMemory(user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('username', user.username);
+    prefs.setString('email', user.email);
     prefs.setString('password', user.password);
     prefs.setString('token', user.token);
   }

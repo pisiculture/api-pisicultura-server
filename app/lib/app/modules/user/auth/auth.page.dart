@@ -36,7 +36,7 @@ class AuthPage extends GetView<AuthController> {
                   Column(
                     children: [
                       TextFormField(
-                        controller: controller.username,
+                        controller: controller.email,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(14),

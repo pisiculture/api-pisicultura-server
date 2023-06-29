@@ -6,16 +6,15 @@ import 'dart:convert';
 class UserRepository {
   final UserApiClient? apiClient = UserApiClient();
 
-  Future<User> auth(String username, String password, bool ehMd5) async {
-    if (!ehMd5) password = textToMd5(password);
-    var user = await apiClient?.auth(username, password);
-    return user != null ? User.fromMap(user) : null;
+  Future<UserSession?> auth(String email, String password) async {
+    var user = await apiClient?.auth(email, password);
+    return user != null ? UserSession.fromJson(user) : null;
   }
 
-  Future<User> post(User user) async {
+  Future<UserSession?> post(UserSession user) async {
     user.setPassword(textToMd5(user.getPassword()));
     var result = await apiClient?.register(user);
-    return result != null ? User.fromMap(result) : null;
+    return result != null ? UserSession.fromJson(result) : null;
   }
 
   String textToMd5(String text) {

@@ -16,7 +16,7 @@ class InitController extends GetxController {
 
     if (ehPrimeiroLogin!) {
       System.getInstance()
-          .setUser(await userRepository?.auth(username!, password!, true));
+          .setUser(await userRepository?.auth(username!, password!));
       if (System.getInstance().getUser() != null) {
         Get.offAndToNamed(AppRoutes.home);
       }
