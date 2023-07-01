@@ -13,6 +13,12 @@ void main() {
       debugShowCheckedModeBanner: false,
       title: 'Pisicultura',
       theme: ThemeData(
+        drawerTheme: const DrawerThemeData(
+          backgroundColor: Color.fromARGB(255, 8, 8, 12),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF171821),
+        ),
         buttonTheme: const ButtonThemeData(
           buttonColor: Colors.green,
         ),

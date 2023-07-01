@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/app/modules/home/components/cards.dart';
 import 'package:mobile/app/modules/home/components/drawer.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
-import 'package:mobile/app/modules/home/widgets/activity_details_card.dart';
 import 'package:mobile/app/modules/home/widgets/line_chart_card.dart';
 import 'package:mobile/responsive.dart';
 
 class HomePage extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  SizedBox _height(BuildContext context) => SizedBox(
-        height: Responsive.isDesktop(context) ? 30 : 20,
-      );
+  SizedBox _height(BuildContext context) =>
+      SizedBox(height: Responsive.isDesktop(context) ? 30 : 20);
   HomePage({super.key}) {
     controller.onInit();
   }
@@ -24,7 +23,7 @@ class HomePage extends GetView<HomeController> {
           : DDrawer(scaffoldKey: _scaffoldKey),
       endDrawer: Responsive.isMobile(context)
           ? SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: 300,
               child: SizedBox(
                   width: 250, child: DDrawer(scaffoldKey: _scaffoldKey)))
           : null,
@@ -32,11 +31,10 @@ class HomePage extends GetView<HomeController> {
         child: Row(
           children: [
             if (Responsive.isDesktop(context))
-              Expanded(
-                flex: 3,
-                child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: DDrawer(scaffoldKey: _scaffoldKey)),
+              SizedBox(
+                width: 300,
+                height: MediaQuery.of(context).size.height,
+                child: DDrawer(scaffoldKey: _scaffoldKey),
               ),
             Expanded(
               flex: 8,
@@ -75,8 +73,7 @@ class HomePage extends GetView<HomeController> {
                             ],
                           ),
                         ),
-                        _height(context),
-                        const ActivityDetailsCard(),
+                        const DCards(),
                         _height(context),
                         LineChartCard(),
                         _height(context),
