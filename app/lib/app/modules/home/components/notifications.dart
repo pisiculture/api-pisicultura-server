@@ -23,14 +23,14 @@ class NotificationInfo extends StatelessWidget {
           final lista = snapshot.data;
           if (lista!.isNotEmpty) {
             return ListView.builder(
-              itemCount: lista!.length,
+              itemCount: lista.length,
               itemBuilder: (context, index) {
                 if (lista.isNotEmpty) {
                   return DwListTile(
                     title: lista[index].getTitle().toString(),
                     leading: (index + 1).toString(),
                     subtitle: lista[index].getDescription().toString(),
-                    onDelete: () => controller!.notificationRepository
+                    onDelete: () => controller.notificationRepository
                         .deleteById(lista[index].getId()),
                   );
                 } else {
@@ -57,11 +57,11 @@ class NotificationInfo extends StatelessWidget {
   }
 
   findSvgType(String type) {
-    if (type! == "INFO") {
+    if (type == "INFO") {
       return "";
-    } else if (type! == "WARNING") {
+    } else if (type == "WARNING") {
       return "";
-    } else if (type! == "ERROR") {
+    } else if (type == "ERROR") {
       return "";
     } else {
       return "";

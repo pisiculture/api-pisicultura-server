@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:mobile/app/global/singleton/system.dart';
 import 'package:mobile/app/global/constants/responsive.dart';
+import 'package:mobile/app/routes/app_pages.dart';
 
 class MenuModel {
   String icon;
   String title;
-  MenuModel({required this.icon, required this.title});
+  String router;
+  MenuModel({required this.icon, required this.title, required this.router});
 }
 
 class DDrawer extends StatefulWidget {
@@ -20,11 +23,31 @@ class DDrawer extends StatefulWidget {
 
 class _MenuState extends State<DDrawer> {
   List<MenuModel> menu = [
-    MenuModel(icon: 'assets/icons/home.svg', title: "Inicio"),
-    MenuModel(icon: 'assets/icons/profile.svg', title: "Perfil"),
-    MenuModel(icon: 'assets/icons/setting.svg', title: "Configurações"),
-    MenuModel(icon: 'assets/icons/history.svg', title: "Agendamentos"),
-    MenuModel(icon: 'assets/icons/signout.svg', title: "Sair"),
+    MenuModel(
+      icon: 'assets/icons/home.svg',
+      title: "Inicio",
+      router: AppRoutes.initial,
+    ),
+    MenuModel(
+      icon: 'assets/icons/profile.svg',
+      title: "Perfil",
+      router: AppRoutes.profile,
+    ),
+    MenuModel(
+      icon: 'assets/icons/setting.svg',
+      title: "Configurações",
+      router: AppRoutes.settings,
+    ),
+    MenuModel(
+      icon: 'assets/icons/history.svg',
+      title: "Agendamentos",
+      router: "",
+    ),
+    MenuModel(
+      icon: 'assets/icons/signout.svg',
+      title: "Sair",
+      router: AppRoutes.auth,
+    ),
   ];
 
   int selected = 0;
@@ -78,6 +101,7 @@ class _MenuState extends State<DDrawer> {
                       setState(() {
                         selected = i;
                       });
+                      Get.toNamed(menu[i].router);
                       widget.scaffoldKey.currentState!.closeDrawer();
                     },
                     child: Row(
@@ -85,19 +109,17 @@ class _MenuState extends State<DDrawer> {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 13, vertical: 7),
-                          child: SvgPicture.asset(
-                            menu[i].icon,
-                            color: selected == i ? Colors.black : Colors.grey,
-                          ),
+                          child: SvgPicture.asset(menu[i].icon),
                         ),
                         Text(
                           menu[i].title,
                           style: TextStyle(
-                              fontSize: 16,
-                              color: selected == i ? Colors.black : Colors.grey,
-                              fontWeight: selected == i
-                                  ? FontWeight.w600
-                                  : FontWeight.normal),
+                            fontSize: 16,
+                            color: selected == i ? Colors.black : Colors.grey,
+                            fontWeight: selected == i
+                                ? FontWeight.w600
+                                : FontWeight.normal,
+                          ),
                         )
                       ],
                     ),

@@ -12,8 +12,6 @@ import 'package:mobile/app/modules/home/widgets/line_chart_card.dart';
 
 class HomePage extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  SizedBox _height(BuildContext context) =>
-      SizedBox(height: Responsive.isDesktop(context) ? 30 : 20);
   HomePage({super.key}) {
     controller.onInit();
   }

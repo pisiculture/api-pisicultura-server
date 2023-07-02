@@ -11,7 +11,7 @@ class TopReferals extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 350,
-      padding: EdgeInsets.all(appPadding),
+      padding: const EdgeInsets.all(appPadding),
       decoration: BoxDecoration(
         color: secondaryColor,
         borderRadius: BorderRadius.circular(10),
@@ -22,7 +22,7 @@ class TopReferals extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'TopReferals',
                 style: TextStyle(
                   fontSize: 15,
@@ -40,12 +40,12 @@ class TopReferals extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: appPadding,
           ),
           Expanded(
             child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: referalData.length,
               itemBuilder: (context, index) => ReferalInfoDetail(
