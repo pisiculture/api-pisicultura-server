@@ -13,7 +13,7 @@ module.exports = {
     },
 
     getByIdUser(iduser) {
-        return PermissionModel.find({ "user._id": iduser });
+        return PermissionModel.find({ "user.id": iduser });
     },
 
     findByEmailUser() {

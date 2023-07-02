@@ -3,7 +3,6 @@ const service = require('../services/permission.js')
 module.exports = {
 
     async getByIdUser(req, res) {
-        console.log(req.header)
         try {
             res.status(200).json(await service.getByIdUser(req.params.id))
         } catch (error) {

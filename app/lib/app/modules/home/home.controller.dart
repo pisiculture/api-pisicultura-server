@@ -18,7 +18,10 @@ class HomeController extends GetxController {
   findPermission() async {
     List<Permission> per = await permissionsRepository
         .getPermission(System.getInstance().getUser().getId());
-    print(per);
+    if (per.isNotEmpty) {
+      channel.sink.add(
+          '{ "event": "REGISTER", "key": "${per[0].getInstallation()}", "connection": "CLIENTE" }');
+    }
   }
 
   HomeController() {

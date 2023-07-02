@@ -5,22 +5,21 @@ class Permissions {
 
   getPermissions() => _permission;
 
-  Permissions.fromJson(Map<String, dynamic> json) {
-    if (json['permission'] != null) {
-      _permission = <Permission>[];
-      json['permission'].forEach((v) {
-        _permission!.add(Permission.fromJson(v));
-      });
+  Permissions.fromJson(List<dynamic> json) {
+    _permission = <Permission>[];
+    for (var v in json) {
+      _permission!.add(Permission.fromJson(v));
     }
   }
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (_permission != null) {
-      data['permission'] = _permission!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+Map<String, dynamic> toJson() {
+  final Map<String, dynamic> data = <String, dynamic>{};
+  //if (_permission != null) {
+  //  data['permission'] = _permission!.map((v) => v.toJson()).toList();
+  // }
+  return data;
+  // }
 }
 
 class Permission {
@@ -33,7 +32,7 @@ class Permission {
   getInstallation() => _installation;
 
   Permission.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
+    _id = json['_id'];
     _privilegs = json['privilegs'].cast<String>();
     _installation = json['installation'] != null
         ? Installation.fromJson(json['installation'])
@@ -42,7 +41,7 @@ class Permission {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = _id;
+    data['_id'] = _id;
     data['privilegs'] = _privilegs;
     if (_installation != null) {
       data['installation'] = _installation!.toJson();

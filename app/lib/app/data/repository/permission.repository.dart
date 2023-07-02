@@ -5,8 +5,10 @@ class PermissionRepository {
   final PermissionApiClient apiClient = PermissionApiClient();
 
   Future<List<Permission>> getPermission(String iduser) async {
-    var dados = await apiClient.getPermissions(iduser);
-    if (dados != null) return Permissions.fromJson(dados!).getPermissions();
+    List<dynamic> dados = await apiClient.getPermissions(iduser);
+    if ((dados.isNotEmpty)) {
+      return Permissions.fromJson(dados).getPermissions();
+    }
     return List<Permission>.empty();
   }
 }

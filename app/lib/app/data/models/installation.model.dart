@@ -12,7 +12,7 @@ class Installation {
   getConfiguration() => _configuration;
 
   Installation.fromJson(Map<String, dynamic> json) {
-    _id = json['id'];
+    _id = json['_id'];
     _key = json['key'];
     _description = json['description'];
     _configuration = json['configuration'] != null
