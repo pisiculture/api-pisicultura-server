@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
+import 'package:mobile/app/modules/home/components/discussions.dart';
 import 'package:mobile/app/modules/home/components/drawer.dart';
+import 'package:mobile/app/modules/home/components/top_referals.dart';
+import 'package:mobile/app/modules/home/components/users_by_device.dart';
+import 'package:mobile/app/modules/home/components/viewers.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
+import 'package:mobile/app/global/constants/responsive.dart';
 import 'package:mobile/app/modules/home/widgets/line_chart_card.dart';
-import 'package:mobile/responsive.dart';
 
 class HomePage extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -16,6 +20,7 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    const appPadding = 16.0;
     return Scaffold(
       key: _scaffoldKey,
       drawer: !Responsive.isDesktop(context)
@@ -73,11 +78,101 @@ class HomePage extends GetView<HomeController> {
                             ],
                           ),
                         ),
-                        const DCards(),
-                        _height(context),
-                        LineChartCard(),
-                        _height(context),
-                        LineChartCard()
+                        SafeArea(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Column(
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          flex: 5,
+                                          child: Column(
+                                            children: [
+                                              const AnalyticCards(),
+                                              const SizedBox(
+                                                  height: appPadding),
+                                              LineChartCard(),
+                                              if (Responsive.isMobile(context))
+                                                const SizedBox(
+                                                    height: appPadding),
+                                              if (Responsive.isMobile(context))
+                                                const Discussions(),
+                                            ],
+                                          ),
+                                        ),
+                                        if (!Responsive.isMobile(context))
+                                          const SizedBox(width: appPadding),
+                                        if (!Responsive.isMobile(context))
+                                          const Expanded(
+                                              flex: 2, child: Discussions()),
+                                      ],
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          flex: 5,
+                                          child: Column(
+                                            children: [
+                                              const SizedBox(
+                                                  height: appPadding),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  if (!Responsive.isMobile(
+                                                      context))
+                                                    const Expanded(
+                                                      flex: 2,
+                                                      child: TopReferals(),
+                                                    ),
+                                                  if (!Responsive.isMobile(
+                                                      context))
+                                                    const SizedBox(
+                                                      width: appPadding,
+                                                    ),
+                                                  const Expanded(
+                                                    flex: 3,
+                                                    child: Viewers(),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                height: appPadding,
+                                              ),
+                                              if (Responsive.isMobile(context))
+                                                const SizedBox(
+                                                    height: appPadding),
+                                              if (Responsive.isMobile(context))
+                                                const TopReferals(),
+                                              if (Responsive.isMobile(context))
+                                                const SizedBox(
+                                                    height: appPadding),
+                                              if (Responsive.isMobile(context))
+                                                const UsersByDevice(),
+                                            ],
+                                          ),
+                                        ),
+                                        if (!Responsive.isMobile(context))
+                                          const SizedBox(width: appPadding),
+                                        if (!Responsive.isMobile(context))
+                                          const Expanded(
+                                            flex: 2,
+                                            child: UsersByDevice(),
+                                          ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),

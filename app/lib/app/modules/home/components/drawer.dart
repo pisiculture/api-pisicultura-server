@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile/app/global/singleton/system.dart';
-import 'package:mobile/responsive.dart';
+import 'package:mobile/app/global/constants/responsive.dart';
 
 class MenuModel {
   String icon;

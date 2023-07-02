@@ -1,67 +1,130 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mobile/responsive.dart';
+import 'package:mobile/app/global/constants/constants.dart';
+import 'package:mobile/app/global/constants/responsive.dart';
+import 'package:mobile/app/modules/home/components/analytic_info_card.dart';
+import 'package:mobile/app/modules/home/components/discussions_info_model.dart';
 
-class HealthModel {
-  final String icon;
-  final String value;
-  final String title;
-  const HealthModel(
-      {required this.icon, required this.value, required this.title});
+class AnalyticInfo {
+  final String? svgSrc, title;
+  final double? count;
+  final Color? color;
+
+  AnalyticInfo({
+    this.svgSrc,
+    this.title,
+    this.count,
+    this.color,
+  });
 }
 
-class DCards extends StatefulWidget {
-  const DCards({super.key});
+List analyticData = [
+  AnalyticInfo(
+    title: "Temperatura",
+    count: 720,
+    svgSrc: "assets/icons/bar-chart.svg",
+    color: primaryColor,
+  ),
+  AnalyticInfo(
+    title: "PH",
+    count: 6.7,
+    svgSrc: "assets/icons/Post.svg",
+    color: purple,
+  ),
+  AnalyticInfo(
+    title: "Alertas",
+    count: 2,
+    svgSrc: "assets/icons/info.svg",
+    color: orange,
+  ),
+  AnalyticInfo(
+    title: "Pendências",
+    count: 3,
+    svgSrc: "assets/icons/Comments.svg",
+    color: green,
+  ),
+];
+
+List discussionData = [
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Lutfhi Chan",
+    date: "Jan 25,2021",
+  ),
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Devi Carlos",
+    date: "Jan 25,2021",
+  ),
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Danar Comel",
+    date: "Jan 25,2021",
+  ),
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Karin Lumina",
+    date: "Jan 25,2021",
+  ),
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Fandid Deadan",
+    date: "Jan 25,2021",
+  ),
+  DiscussionInfoModel(
+    imageSrc: "assets/logo.png",
+    name: "Lutfhi Chan",
+    date: "Jan 25,2021",
+  ),
+];
+
+class AnalyticCards extends StatefulWidget {
+  const AnalyticCards({Key? key}) : super(key: key);
 
   @override
-  State<DCards> createState() => _DCardsState();
+  State<AnalyticCards> createState() => _AnalyticCardsState();
 }
 
-class _DCardsState extends State<DCards> {
-  final List<HealthModel> healthDetails = const [
-    HealthModel(
-        icon: 'assets/icons/burn.svg', value: "32.5", title: "Temperatura C"),
-    HealthModel(icon: 'assets/icons/steps.svg', value: "7.23", title: "PH"),
-  ];
+class _AnalyticCardsState extends State<AnalyticCards> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    return Responsive(
+      mobile: AnalyticInfoCardGridView(
+        crossAxisCount: size.width < 650 ? 2 : 4,
+        childAspectRatio: size.width < 650 ? 2 : 1.5,
+      ),
+      tablet: const AnalyticInfoCardGridView(),
+      desktop: AnalyticInfoCardGridView(
+        childAspectRatio: size.width < 1400 ? 1.5 : 2.1,
+      ),
+    );
+  }
+}
+
+class AnalyticInfoCardGridView extends StatelessWidget {
+  const AnalyticInfoCardGridView(
+      {Key? key, this.crossAxisCount = 4, this.childAspectRatio = 1.4})
+      : super(key: key);
+
+  final int crossAxisCount;
+  final double childAspectRatio;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: healthDetails.length,
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      physics: const ScrollPhysics(),
+      itemCount: analyticData.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: Responsive.isMobile(context) ? 2 : 4,
-          crossAxisSpacing: !Responsive.isMobile(context) ? 15 : 12,
-          mainAxisSpacing: 12.0),
-      itemBuilder: (context, i) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.asset(healthDetails[i].icon),
-            Padding(
-              padding: const EdgeInsets.only(top: 15, bottom: 4),
-              child: Text(
-                healthDetails[i].value,
-                style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            Text(
-              healthDetails[i].title,
-              style: const TextStyle(
-                fontSize: 13,
-                color: Colors.grey,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-          ],
-        );
-      },
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: appPadding,
+        mainAxisSpacing: appPadding,
+        childAspectRatio: childAspectRatio,
+      ),
+      itemBuilder: (context, index) => AnalyticInfoCard(
+        info: analyticData[index],
+      ),
     );
   }
 }
