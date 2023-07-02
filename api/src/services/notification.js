@@ -8,18 +8,25 @@ module.exports = {
       title: vo.title,
       description: vo.description,
       state: "PENDING",
-      type: "EMAIL",
-      onCreate: new Date(),
-      destiny: vo.destiny
+      type: vo.type
     });
     await model.save();
   },
 
-  async find(filters) {
+  async findByIdUser(id) {   
     const response = [];
-    await NotificationModel.find({})
-      .then(data => response.push(data))
-      .catch(err => Error(err));
+    await NotificationModel.find({ "user.id": id})
+      .then(res => {
+        response.push({
+          id: res.id,
+          type: res.type,
+          title: res.title,
+          description: res.description,
+          createAt: res.createAt,
+          read: res.status == 'READ'
+        })
+      })
+      .catch(err => console.log(err.message))
     return response;
   }
 }

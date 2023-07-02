@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile/app/global/constants/constants.dart';
 import 'package:mobile/app/global/constants/responsive.dart';
 import 'package:mobile/app/modules/home/components/analytic_info_card.dart';
-import 'package:mobile/app/modules/home/components/discussions_info_model.dart';
 
 class AnalyticInfo {
   final String? svgSrc, title;
@@ -41,39 +40,6 @@ List analyticData = [
     count: 3,
     svgSrc: "assets/icons/Comments.svg",
     color: green,
-  ),
-];
-
-List discussionData = [
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Lutfhi Chan",
-    date: "Jan 25,2021",
-  ),
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Devi Carlos",
-    date: "Jan 25,2021",
-  ),
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Danar Comel",
-    date: "Jan 25,2021",
-  ),
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Karin Lumina",
-    date: "Jan 25,2021",
-  ),
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Fandid Deadan",
-    date: "Jan 25,2021",
-  ),
-  DiscussionInfoModel(
-    imageSrc: "assets/logo.png",
-    name: "Lutfhi Chan",
-    date: "Jan 25,2021",
   ),
 ];
 

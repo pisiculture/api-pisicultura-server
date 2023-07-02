@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
-import 'package:mobile/app/modules/home/components/discussions.dart';
 import 'package:mobile/app/modules/home/components/drawer.dart';
+import 'package:mobile/app/modules/home/components/notifications.dart';
 import 'package:mobile/app/modules/home/components/top_referals.dart';
 import 'package:mobile/app/modules/home/components/users_by_device.dart';
 import 'package:mobile/app/modules/home/components/viewers.dart';
@@ -100,15 +100,21 @@ class HomePage extends GetView<HomeController> {
                                                 const SizedBox(
                                                     height: appPadding),
                                               if (Responsive.isMobile(context))
-                                                const Discussions(),
+                                                NotificationInfo(
+                                                  controller: controller,
+                                                ),
                                             ],
                                           ),
                                         ),
                                         if (!Responsive.isMobile(context))
                                           const SizedBox(width: appPadding),
                                         if (!Responsive.isMobile(context))
-                                          const Expanded(
-                                              flex: 2, child: Discussions()),
+                                          Expanded(
+                                            flex: 2,
+                                            child: NotificationInfo(
+                                              controller: controller,
+                                            ),
+                                          ),
                                       ],
                                     ),
                                     Row(

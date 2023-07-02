@@ -27,11 +27,7 @@ const NotificationSchema = new Schema({
         type: String,
         require: true
     },
-    destiny: {
-        type: String,
-        require: true
-    },
-    timeSend: {
+    sendAt: {
         type: Date,
         require: true
     }
