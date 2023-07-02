@@ -10,6 +10,6 @@ class DashboardRepository {
     final response = await client.dashboard(id);
 
     final dashbord = Dashbord.fromJson(response);
-    print(dashbord.data);
+    print(dashbord.getData());
   }
 }

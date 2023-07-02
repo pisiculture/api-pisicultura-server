@@ -1,22 +1,24 @@
 class Dashbord {
-  String? type;
-  String? message;
-  Data? data;
+  String? _type;
+  String? _message;
+  Data? _data;
 
-  Dashbord({this.type, this.message, this.data});
+  getType() => _data;
+  getMessage() => _message;
+  getData() => _data;
 
   Dashbord.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    message = json['message'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    _type = json['type'];
+    _message = json['message'];
+    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['type'] = type;
-    data['message'] = message;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
+    data['type'] = _type;
+    data['message'] = _message;
+    if (_data != null) {
+      data['data'] = _data!.toJson();
     }
     return data;
   }

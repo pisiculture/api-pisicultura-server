@@ -17,12 +17,11 @@ app.use('/', routers);
 const authService = require('./src/services/auth-token');
 
 function selectProxyHost(req, res) {
-    if (req.path.startsWith('/'))
-       return 'http://ws:3002/';
-    else {
+    if (req.path.startsWith('/api')) {
         authService.checkToken(req, res);
-        if (req.path.startsWith('/api'))
-            return 'http://api:3001/';
+        return 'http://api:3001/';
+    } else if (req.path.startsWith('/')) {
+        return 'http://ws:3002/';
     }
 }
 

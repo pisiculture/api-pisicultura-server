@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 const routers = require("./src/routers/router");
-app.use("/", routers);
+app.use("/ws", routers);
 
 const conn = require('./src/db/coonDB');
 conn();

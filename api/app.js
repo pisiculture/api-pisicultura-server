@@ -10,6 +10,6 @@ const conn = require('./src/db/connDB');
 conn();
 
 const routers = require("./src/routers/router");
-app.use('/', routers);
+app.use('/api', routers);
 
 app.listen(3001, () => console.log('Servidor API iníciado com sucesso.'));

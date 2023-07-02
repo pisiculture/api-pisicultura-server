@@ -2,7 +2,6 @@ import 'package:mobile/app/data/models/user.model.dart';
 
 class System {
   static System? _instance;
-  String? _token;
   UserSession? _user;
 
   System() {
@@ -14,12 +13,8 @@ class System {
     return _instance!;
   }
 
-  getToken() => _token ?? "";
+  getToken() => _user?.getToken();
 
   getUser() => _user;
   setUser(val) => _user = val;
-
-  setToken(String val) {
-    _token = val;
-  }
 }
