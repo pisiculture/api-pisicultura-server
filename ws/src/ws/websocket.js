@@ -23,6 +23,7 @@ function onMessage(session, data) {
     }
     case 'MESSAGE': {
       const data = json.data;
+      console.log(data)
       data.key = getKeyBySessionAndConnection(session, 'SOCKET');
       analysisService.create(data);
       break;
@@ -62,6 +63,16 @@ module.exports = {
 
   getSessions() {
     return sessions;
+  },
+
+  async startIA() {
+    console.log("Executando processo IA..");
+    sessions
+      .filter(i => i.connection == "SOCKET")
+      .forEach(s => {
+        s.session.send(JSON.stringify({ action: 'READ' }));
+      });
+    setInterval(() => this.startIA(), 60000)
   },
 
   sendMessage(key, connection, message) {

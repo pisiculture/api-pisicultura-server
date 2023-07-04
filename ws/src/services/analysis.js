@@ -11,13 +11,5 @@ module.exports = {
             installation: installation
         });
         await analysis.save();
-    },
-
-    async findByIdInstallation(id) {
-        await AnalysisModel.find({})
-            .then((data) => {
-                return data;
-            });
-        throw Error("Error");
-    }
+    },  
 }

@@ -79,7 +79,8 @@ void read(StaticJsonDocument<200> dto) {
   bool water_pump = digitalRead(WATER_PUMP) == 1;
   bool water_lock = digitalRead(WATER_LOCK) == 1;
   ws.send("{ \"event\": \"MESSAGE\", \"data\": { \"ph\": " 
-  + String(calculatePH()) + ", \"water_pump\": " 
+  + String(calculatePH()) + ", \"temperature\": "
+  + String(30.1) + ", \"water_pump\": " 
   + String(water_pump) + ", \"water_lock\": " 
   + String(water_lock) + "}}");
 }
