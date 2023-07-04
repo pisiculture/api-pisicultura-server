@@ -4,7 +4,12 @@ module.exports = {
 
     sessions() {
         let sessions = [];
-        ws.getSessions().forEach(i => sessions.push({ key: i.key, connection: i.connection, service: i.service || 'all' }))
+        ws.getSessions()
+          .forEach(i => sessions.push({ 
+               key: i.key, 
+               connection: i.connection, 
+               service: i.service || 'all' 
+            }))
         return sessions;
     }
 }

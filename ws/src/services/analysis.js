@@ -7,6 +7,7 @@ module.exports = {
         const installation = installationService.findByKey(data.key);
         const analysis = AnalysisModel({
             ph: data.ph,
+            temperature: data.temperature,
             installation: installation
         });
         await analysis.save();
