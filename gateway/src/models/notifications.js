@@ -4,9 +4,6 @@ const { UserSchema } = require("./user");
 const { Schema } = mongoose;
 
 const NotificationSchema = new Schema({
-    id: {
-        type: String
-    },
     title: {
         type: String,
         require: true
