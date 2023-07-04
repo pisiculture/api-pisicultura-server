@@ -37,8 +37,6 @@ class DwGetConnect extends GetConnect {
         .delete(url, headers: _addAuthHeader(), contentType: _contentType);
   }
 
-  Future<Response<T>> update<T>(String url, dynamic body) async {
-    return httpClient.put<T>(url,
-        body: body, headers: _addAuthHeader(), contentType: _contentType);
-  }
+  Future<Response<T>> putD<T>(String url, dynamic body) async => super
+      .put<T>(url, body, headers: _addAuthHeader(), contentType: _contentType);
 }

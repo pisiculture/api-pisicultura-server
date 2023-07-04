@@ -25,9 +25,10 @@ class NotificationApiClient extends DwGetConnect {
     }
   }
 
-  Future<bool> deletar(String id) async {
+  Future<bool> read(String iduser, String id) async {
     try {
-      final response = await delete('$baseUrlApp/api/notification/$id');
+      final response =
+          await putD('$baseUrlApp/api/notification/read/$iduser/$id', {});
       return response.statusCode == 202;
     } catch (e) {
       return false;

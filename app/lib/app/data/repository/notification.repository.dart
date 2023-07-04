@@ -5,10 +5,6 @@ import 'package:mobile/app/global/singleton/system.dart';
 class NotificationRepository {
   final NotificationApiClient apiClient = NotificationApiClient();
 
-  Future<bool> deleteById(String id) async {
-    return await apiClient.deletar(id);
-  }
-
   Future<List<Notifications>> find() async {
     List<Notifications>? notifications = <Notifications>[];
     List<dynamic> req =
@@ -21,5 +17,9 @@ class NotificationRepository {
       }
     }
     return notifications;
+  }
+
+  read(String id) async {
+    await apiClient.read(System.getInstance().getUser().getId(), id);
   }
 }

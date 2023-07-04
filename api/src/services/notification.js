@@ -16,7 +16,7 @@ module.exports = {
 
   async findByIdUser(id) {
     const response = [];
-    await NotificationModel.find({ "user.id": id })
+    await NotificationModel.find({ "user.id": id, status: { $ne: "READ" } })
       .then(res => {
         res.forEach(el => {
           response.push({
@@ -31,5 +31,11 @@ module.exports = {
       })
       .catch(err => console.log(err.message))
     return response;
+  },
+
+  async read(iduser, id) {
+    await NotificationModel.findOneAndUpdate({ "user.id": iduser, id: id })
+      .then(res => { })
+      .catch(err => { throw Error(err) });
   }
 }

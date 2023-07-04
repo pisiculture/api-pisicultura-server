@@ -69,26 +69,14 @@ class _DwListTileState extends State<DwListTile> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(1.5),
-      child: Container(
-        decoration: BoxDecoration(
-          color: ThemeData().cardTheme.color,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            topLeft: Radius.circular(20),
-          ),
-        ),
-        child: ListTile(
-          title: Text(widget.title!),
-          subtitle: Text(widget.subtitle!),
-          trailing: DwIconButton(
-            icon: Icons.delete_forever,
-            sizeIcon: 25,
-            corIcon: Colors.red,
-            onPressed: () => deletarRegistro(),
-          ),
-        ),
+    return ListTile(
+      title: Text(widget.title!),
+      subtitle: Text(widget.subtitle!),
+      trailing: DwIconButton(
+        icon: Icons.delete_forever,
+        sizeIcon: 25,
+        corIcon: Colors.red,
+        onPressed: () => deletarRegistro(),
       ),
     );
   }

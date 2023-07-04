@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/app/data/models/notifications.model.dart';
-import 'package:mobile/app/global/components/list.title.dart';
 import 'package:mobile/app/global/components/text.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
 
@@ -25,15 +24,23 @@ class NotificationInfo extends StatelessWidget {
             final lista = snapshot.data;
             if (lista!.isNotEmpty) {
               return ListView.builder(
-                itemCount: lista.length,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   if (lista.isNotEmpty) {
-                    return DwListTile(
-                      title: lista[index].getTitle().toString(),
-                      leading: (index + 1).toString(),
-                      subtitle: lista[index].getDescription().toString(),
-                      onDelete: () => controller.notificationRepository
-                          .deleteById(lista[index].getId()),
+                    return ListTile(
+                      title: Text(lista[index].getTitle().toString()),
+                      subtitle: Text(lista[index].getDescription().toString()),
+                      leading: const Icon(
+                        Icons.info_outline,
+                        color: findColor(lista[index].getType()),
+                      ),
+                      trailing: GestureDetector(
+                        onTap: () => controller.notificationRepository
+                            .read(lista[index].getId()),
+                        child: const Icon(Icons.thumb_up_off_alt_sharp),
+                      ),
                     );
                   } else {
                     return const Center(
@@ -59,15 +66,15 @@ class NotificationInfo extends StatelessWidget {
     return "";
   }
 
-  findSvgType(String type) {
+  Color findColor(String type) {
     if (type == "INFO") {
-      return "";
+      return Colors.blue;
     } else if (type == "WARNING") {
-      return "";
+      return Colors.yellowAccent;
     } else if (type == "ERROR") {
-      return "";
+      return Colors.red;
     } else {
-      return "";
+      return Colors.green;
     }
   }
 }

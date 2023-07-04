@@ -18,4 +18,13 @@ module.exports = {
             res.status(406).json({ message: error.message });
         }
     },
+
+    async read(req, res) {
+        try {
+            service.read(req.params.iduser, req.params.id);
+            res.status(202).json({ message: "Update state sucessfull."});
+        } catch (err) {
+            res.status(404).json({ message: err.message });
+        }
+    }
 }
