@@ -1,5 +1,4 @@
 const { Notification: NotificationModel } = require("../models/notifications");
-const { User: UserModel } = require('../models/user');
 
 module.exports = {
 
@@ -16,7 +15,7 @@ module.exports = {
 
   async findByIdUser(id) {
     const response = [];
-    await NotificationModel.find({ "user.id": id, status: { $ne: "READ" } })
+    await NotificationModel.find({ "user.id": id, state: { $ne: "READ" } })
       .then(res => {
         res.forEach(el => {
           response.push({
@@ -34,8 +33,8 @@ module.exports = {
   },
 
   async read(iduser, id) {
-    await NotificationModel.findOneAndUpdate({ "user.id": iduser, id: id })
-      .then(res => { })
+    await NotificationModel.findOneAndUpdate({ "user.id": iduser, _id: id }, { state: "READ"})
+      .then(res => {  })
       .catch(err => { throw Error(err) });
   }
 }
