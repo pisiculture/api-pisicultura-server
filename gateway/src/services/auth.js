@@ -49,10 +49,7 @@ module.exports = {
             email: email,
             password: passwordHash,
         });
-
-        const user = await model.save();
-        notificationService.create(user, { title: "User created with success.", description: "Message success." });
-        return user;
+        return await model.save();
     },
 }
 
