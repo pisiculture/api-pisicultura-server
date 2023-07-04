@@ -14,6 +14,8 @@ function onMessage(session, data) {
         if (i.session === session) {
           i.key = json.key;
           i.connection = json.connection;
+          if (json.service)
+            i.service = json.service;
         }
         return i;
       })

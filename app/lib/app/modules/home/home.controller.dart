@@ -21,7 +21,7 @@ class HomeController extends GetxController {
         .getPermission(System.getInstance().getUser().getId());
     if (per.isNotEmpty) {
       channel.sink.add(
-          '{ "event": "REGISTER", "key": "${per[0].getInstallation()}", "connection": "CLIENTE" }');
+          '{ "event": "REGISTER", "key": "${per[0].getInstallation()}", "connection": "CLIENTE", "service": "NOTIFICATION" }');
     }
   }
 

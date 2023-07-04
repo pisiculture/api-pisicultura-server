@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/app/global/constants/constants.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
-import 'package:mobile/app/modules/home/components/drawer.dart';
 import 'package:mobile/app/modules/home/components/notifications.dart';
 import 'package:mobile/app/modules/home/components/scaffold.dart';
 import 'package:mobile/app/modules/home/components/top_referals.dart';

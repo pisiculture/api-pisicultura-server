@@ -1,5 +1,5 @@
 class Notifications {
-  int? _id;
+  String? _id;
   String? _type;
   String? _title;
   String? _description;
@@ -21,11 +21,11 @@ class Notifications {
   getRead() => _read;
 
   Notifications.fromJson(Map<String, dynamic> json) {
-    _id = json['_id'] ?? 0;
+    _id = json['id'] ?? 0;
     _type = json['type'] ?? "INFO";
     _title = json['title'] ?? '';
     _description = json['description'] ?? '';
-    _createAt = json['createAt'];
+    // _createAt = json['createAt'];
     _read = json['read'] ?? false;
   }
 

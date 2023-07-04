@@ -19,7 +19,7 @@ class AnalyticInfo {
 List analyticData = [
   AnalyticInfo(
     title: "Temperatura",
-    count: 720,
+    count: 32.1,
     svgSrc: "assets/icons/bar-chart.svg",
     color: primaryColor,
   ),
