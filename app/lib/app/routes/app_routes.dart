@@ -25,7 +25,7 @@ class AppPages {
     ),
     GetPage(
         name: AppRoutes.profile,
-        page: () => const ProfilePage(),
+        page: () => ProfilePage(),
         binding: ProfileBinding()),
     GetPage(
       name: AppRoutes.home,
