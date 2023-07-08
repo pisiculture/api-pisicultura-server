@@ -24,7 +24,7 @@ const InstallationSchema = new Schema({
         type: Date,
         require: true
     },
-}, { timestamp: true });
+}, { timestamps: true });
 
 const Installation = mongoose.model("installation", InstallationSchema);
 

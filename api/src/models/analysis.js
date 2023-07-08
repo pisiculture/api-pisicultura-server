@@ -16,6 +16,7 @@ const AnalysisSchema = new Schema({
     installation: {
         type: InstallationSchema
     },
+    createdAt: Date,
 }, { timestamp: true });
 
 const Analysis = mongoose.model('analysis', AnalysisSchema);

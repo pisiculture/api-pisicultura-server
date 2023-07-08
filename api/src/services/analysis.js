@@ -7,7 +7,7 @@ module.exports = {
             .then(res => {
                 res.forEach(r => response.push({
                     temperature: id.temperature,
-                    createAt: r.createAt
+                    createdAt: r.createdAt
                 }));
             });
         return response;
@@ -15,15 +15,15 @@ module.exports = {
 
     async findPhByIdInstallation(id) {
         const response = [];
-        const req = await AnalysisModel.find();
-         console.log(req)
-        if (req) {
-            req.forEach(r => response.push({
-                ph: id.ph,
-                createAt: r.createAt
-            }));
-        }
-
+        await AnalysisModel.find({ "installation.id": id })
+            .then(req => {
+                req.forEach(r =>
+                    response.push({
+                        ph: r.ph,
+                        createdAt: r.createdAt
+                    })
+                );
+            });
         return response;
     }
 }

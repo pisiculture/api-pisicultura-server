@@ -59,7 +59,7 @@ function onConnection(session, req) {
     .forEach(s => {
       s.session.send(JSON.stringify({ action: 'READ' }));
     });
-  //setInterval(() => startIA(), 60000)
+  setInterval(() => startIA(), 60000)
 }
 
 module.exports = {
@@ -67,7 +67,6 @@ module.exports = {
     const wss = new WebSocket.Server({ server });
     wss.on('connection', onConnection);
     console.log(`App Web Socket Server is running!`);
-    startIA();
     return wss;
   },
 
