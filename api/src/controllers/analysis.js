@@ -3,7 +3,7 @@ const service = require("../services/analysis");
 module.exports = {
     async findPhByIdInstallation(req, res) {
         try {
-            res.status(200).json(service.findPhByIdInstallation(req.params.id));
+            res.status(200).json(await service.findPhByIdInstallation(req.params.id));
         } catch (err) {
             res.status(404).json({ message: err.message });
         }
@@ -11,7 +11,7 @@ module.exports = {
 
     async findTemperatureByIdInstallation(req, res) {
         try {
-            res.status(200).json(service.findTemperatureByIdInstallation(req.params.id));
+            res.status(200).json(await service.findTemperatureByIdInstallation(req.params.id));
         } catch (err) {
             res.status(404).json({ message: err.message });
         }

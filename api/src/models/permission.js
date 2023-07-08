@@ -6,7 +6,6 @@ const { InstallationSchema } = require('./installation');
 const { Schema } = mongoose;
 
 const PermissionSchema = new Schema({
-    id: String,
     user: {
         type: UserSchema,
         require: true
@@ -19,13 +18,6 @@ const PermissionSchema = new Schema({
         type: [],
         require: true
     },
-    createdAt: {
-        type: Date,
-        require: true
-    },
-    updatedAt: {
-        type: Date
-    }
 }, { timestamps: true });
 
 const Permission = mongoose.model('permission', PermissionSchema);

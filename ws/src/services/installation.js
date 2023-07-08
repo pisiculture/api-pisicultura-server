@@ -3,10 +3,9 @@ const { Installation: InstallationModel } = require("../models/installation");
 module.exports = {
 
     async findByKey(key) {
-        await InstallationModel.find({ key: key })
-            .then(i => {
-                return i;
-            });
-        throw Error("Installation not found.");
+        const response = await InstallationModel.findOne({ key: key })
+        if (!response)
+            throw Error("Installation not found.");
+        return response;
     }
 }

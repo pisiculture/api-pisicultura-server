@@ -23,7 +23,6 @@ function onMessage(session, data) {
     }
     case 'MESSAGE': {
       const data = json.data;
-      console.log(data)
       data.key = getKeyBySessionAndConnection(session, 'SOCKET');
       analysisService.create(data);
       break;
@@ -53,26 +52,27 @@ function onConnection(session, req) {
   session.on('close', socket => onClose(session));
 }
 
+ function startIA() {
+  console.log("Executando processo IA..");
+  sessions
+    .filter(i => i.connection == "SOCKET")
+    .forEach(s => {
+      s.session.send(JSON.stringify({ action: 'READ' }));
+    });
+  //setInterval(() => startIA(), 60000)
+}
+
 module.exports = {
   ws(server) {
     const wss = new WebSocket.Server({ server });
     wss.on('connection', onConnection);
     console.log(`App Web Socket Server is running!`);
+    startIA();
     return wss;
   },
 
   getSessions() {
     return sessions;
-  },
-
-  async startIA() {
-    console.log("Executando processo IA..");
-    sessions
-      .filter(i => i.connection == "SOCKET")
-      .forEach(s => {
-        s.session.send(JSON.stringify({ action: 'READ' }));
-      });
-    setInterval(() => this.startIA(), 60000)
   },
 
   sendMessage(key, connection, message) {

@@ -17,5 +17,3 @@ const server = app.listen(process.env.PORT || 3002, () => {
 
 const ws = require("./src/ws/websocket");
 ws.ws(server);
-
-ws.startIA();
