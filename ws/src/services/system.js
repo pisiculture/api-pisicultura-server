@@ -8,7 +8,7 @@ module.exports = {
           .forEach(i => sessions.push({ 
                key: i.key, 
                connection: i.connection, 
-               service: i.service || 'all' 
+               service: i.service || 'ALL' 
             }))
         return sessions;
     }

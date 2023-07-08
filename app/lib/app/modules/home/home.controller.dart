@@ -21,13 +21,14 @@ class HomeController extends GetxController {
         .getPermission(System.getInstance().getUser().getId());
     if (per.isNotEmpty) {
       channel.sink.add(
-          '{ "event": "REGISTER", "key": "${per[0].getInstallation()}", "connection": "CLIENTE", "service": "NOTIFICATION" }');
+          '{ "event": "REGISTER", "key": "${per[0].getInstallation().getKey()}", "connection": "CLIENT", "service": "DASHBOARD" }');
     }
   }
 
   HomeController() {
     findPermission();
     channel.stream.listen((message) {
+      print(message);
       channel.sink.close(status.goingAway);
     });
   }

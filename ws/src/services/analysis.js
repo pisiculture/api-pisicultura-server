@@ -11,7 +11,7 @@ module.exports = {
                 temperature: data.temperature,
                 installation: installation
             });
-            await analysis.save();
+            analysis.save();
         }
     },
 }

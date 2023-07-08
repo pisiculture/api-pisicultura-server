@@ -3,7 +3,24 @@ let sessions = [];
 const analysisService = require("../services/analysis");
 
 function onError(session, err) {
+  sessions = sessions.filter(s => s.session !== session);
   console.error(`onError: ${err.message}`);
+}
+
+function serviceSocketExec(session) {
+  if (sessions.filter(i => i.session != session).length > 0) {
+    session.send(JSON.stringify({ action: 'READ' }));
+    setTimeout(() => serviceSocketExec(session), 60000);
+  }
+}
+
+function execServiceDashboard(data) {
+  sessions
+    .filter(i =>
+      i.key == data.key &&
+      i.connection == "CLIENT" &&
+      i.service == "DASHBOARD")
+    .forEach(i => i.session.send(JSON.stringify({ action: 'READ' })));
 }
 
 function onMessage(session, data) {
@@ -18,13 +35,16 @@ function onMessage(session, data) {
             i.service = json.service;
         }
         return i;
-      })
+      });
+      if (json.connection == "SOCKET")
+        serviceSocketExec(session);
       break;
     }
     case 'MESSAGE': {
-      const data = json.data;
-      data.key = getKeyBySessionAndConnection(session, 'SOCKET');
-      analysisService.create(data);
+      const info = json.data;
+      info.key = getKeyBySessionAndConnection(session, 'SOCKET');
+      analysisService.create(info);
+      execServiceDashboard(info);
       break;
     }
     default:
@@ -48,18 +68,8 @@ function onClose(session) {
 function onConnection(session, req) {
   sessions.push({ session: session })
   session.on('message', data => onMessage(session, data));
-  session.on('error', error => onError(session, error));
-  session.on('close', socket => onClose(session));
-}
-
- function startIA() {
-  console.log("Executando processo IA..");
-  sessions
-    .filter(i => i.connection == "SOCKET")
-    .forEach(s => {
-      s.session.send(JSON.stringify({ action: 'READ' }));
-    });
-  setInterval(() => startIA(), 60000)
+  session.on('error', err => onError(session, err));
+  session.on('close', () => onClose(session));
 }
 
 module.exports = {
