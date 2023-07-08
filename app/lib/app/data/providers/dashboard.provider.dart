@@ -1,4 +1,4 @@
-import 'package:mobile/app/data/models/dashboard_model.dart';
+import 'package:mobile/app/data/models/dashboard.model.dart';
 import 'package:mobile/app/data/repository/dashboard.provider.dart';
 
 class DashboardRepository {

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mobile/app/data/models/dashboard_model.dart';
+import 'package:mobile/app/data/models/dashboard.model.dart';
 import 'package:mobile/app/data/models/permission.model.dart';
 import 'package:mobile/app/data/providers/dashboard.provider.dart';
 import 'package:mobile/app/data/repository/notification.repository.dart';
