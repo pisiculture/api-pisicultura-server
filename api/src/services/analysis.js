@@ -15,13 +15,15 @@ module.exports = {
 
     async findPhByIdInstallation(id) {
         const response = [];
-        AnalysisModel.find({ "installation.id": id })
-            .then(res => {
-                res.forEach(r => response.push({
-                    ph: id.ph,
-                    createAt: r.createAt
-                }));
-            });
+        const req = await AnalysisModel.find();
+         console.log(req)
+        if (req) {
+            req.forEach(r => response.push({
+                ph: id.ph,
+                createAt: r.createAt
+            }));
+        }
+
         return response;
     }
 }
