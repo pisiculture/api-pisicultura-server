@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:mobile/app/data/models/dashboard.model.dart';
 import 'package:mobile/app/data/models/permission.model.dart';
@@ -6,7 +8,6 @@ import 'package:mobile/app/data/repository/notification.repository.dart';
 import 'package:mobile/app/data/repository/permission.repository.dart';
 import 'package:mobile/app/global/singleton/system.dart';
 import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/status.dart' as status;
 
 class HomeController extends GetxController {
   Dashbord? dashboard;
@@ -15,6 +16,9 @@ class HomeController extends GetxController {
   final notificationRepository = Get.find<NotificationRepository>();
 
   final channel = IOWebSocketChannel.connect('ws://192.168.0.121:3002');
+
+  RxString ph = RxString("0");
+  RxString temperature = RxString("0");
 
   findPermission() async {
     List<Permission> per = await permissionsRepository
@@ -28,8 +32,11 @@ class HomeController extends GetxController {
   HomeController() {
     findPermission();
     channel.stream.listen((message) {
-      print(message);
-      channel.sink.close(status.goingAway);
+      Map<String, dynamic> data = jsonDecode(message);
+      ph.value = data['ph'].toString();
+      temperature.value = data['temperature'].toString();
+
+      //print(ph);
     });
   }
 }

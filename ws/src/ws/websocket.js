@@ -10,7 +10,7 @@ function onError(session, err) {
 function serviceSocketExec(session) {
   if (sessions.filter(i => i.session != session).length > 0) {
     session.send(JSON.stringify({ action: 'READ' }));
-    setTimeout(() => serviceSocketExec(session), 60000);
+    setTimeout(() => serviceSocketExec(session), 5000);
   }
 }
 
@@ -20,7 +20,7 @@ function execServiceDashboard(data) {
       i.key == data.key &&
       i.connection == "CLIENT" &&
       i.service == "DASHBOARD")
-    .forEach(i => i.session.send(JSON.stringify({ action: 'READ' })));
+    .forEach(i => i.session.send(JSON.stringify({ ph: Math.floor(Math.random() * 100) + 1 || 0, temperature: data.temperature || 0 })));
 }
 
 function onMessage(session, data) {

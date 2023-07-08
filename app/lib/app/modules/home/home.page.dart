@@ -34,7 +34,7 @@ class HomePage extends GetView<HomeController> {
                         flex: 5,
                         child: Column(
                           children: [
-                            const AnalyticCards(),
+                            AnalyticCards(controller: controller),
                             const SizedBox(height: appPadding),
                             LineChartCard(),
                             if (Responsive.isMobile(context))

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:mobile/app/global/constants/constants.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
 
 class AnalyticInfoCard extends StatelessWidget {
-  const AnalyticInfoCard({Key? key, required this.info}) : super(key: key);
+  const AnalyticInfoCard({
+    Key? key,
+    required this.info,
+  }) : super(key: key);
 
   final AnalyticInfo info;
 
@@ -24,12 +28,14 @@ class AnalyticInfoCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "${info.count}",
-                style: const TextStyle(
-                  color: textColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
+              Obx(
+                () => Text(
+                  info.value.value,
+                  style: const TextStyle(
+                    color: textColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
               ),
               Container(
