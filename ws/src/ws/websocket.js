@@ -20,7 +20,7 @@ function execServiceDashboard(data) {
       i.key == data.key &&
       i.connection == "CLIENT" &&
       i.service == "DASHBOARD")
-    .forEach(i => i.session.send(JSON.stringify({ ph: Math.floor(Math.random() * 100) + 1 || 0, temperature: data.temperature || 0 })));
+    .forEach(i => i.session.send(JSON.stringify({ ph: data.ph || 0, temperature: data.temperature || 0 })));
 }
 
 function onMessage(session, data) {
