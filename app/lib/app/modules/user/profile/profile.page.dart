@@ -9,12 +9,10 @@ class ProfilePage extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return DScaffold(
+    return DxScaffold(
       scaffoldKey: _scaffoldKey,
-      body: Container(
-        child: Center(
-          child: Text("TESTE"),
-        ),
+      body: const Center(
+        child: Text("TESTE"),
       ),
     );
   }

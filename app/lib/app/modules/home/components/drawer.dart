@@ -12,19 +12,19 @@ class MenuModel {
   MenuModel({required this.icon, required this.title, required this.router});
 }
 
-class DDrawer extends StatefulWidget {
+class DxDrawer extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
-  const DDrawer({super.key, required this.scaffoldKey});
+  const DxDrawer({super.key, required this.scaffoldKey});
 
   @override
   _MenuState createState() => _MenuState();
 }
 
-class _MenuState extends State<DDrawer> {
+class _MenuState extends State<DxDrawer> {
   List<MenuModel> menu = [
     MenuModel(
-      icon: 'assets/icons/home.svg',
+      icon: 'assets/icons/Dashboard.svg',
       title: "Inicio",
       router: AppRoutes.initial,
     ),
@@ -50,12 +50,10 @@ class _MenuState extends State<DDrawer> {
     ),
   ];
 
-  int selected = 0;
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
+      width: 300,
       height: MediaQuery.of(context).size.height,
       decoration: const BoxDecoration(
         color: Color(0xFF171821),
@@ -78,7 +76,8 @@ class _MenuState extends State<DDrawer> {
                   style: const TextStyle(fontSize: 14),
                 ),
                 decoration: BoxDecoration(
-                  color: ThemeData().drawerTheme.backgroundColor,
+                  color:
+                      ThemeData().drawerTheme.backgroundColor?.withOpacity(0.1),
                 ),
               ),
               SizedBox(
@@ -88,19 +87,14 @@ class _MenuState extends State<DDrawer> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   margin: const EdgeInsets.symmetric(vertical: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(6.0),
                     ),
-                    color: selected == i
-                        ? Theme.of(context).primaryColor
-                        : Colors.transparent,
+                    color: Colors.transparent,
                   ),
                   child: InkWell(
                     onTap: () {
-                      setState(() {
-                        selected = i;
-                      });
                       Get.toNamed(menu[i].router);
                       widget.scaffoldKey.currentState!.closeDrawer();
                     },
@@ -109,16 +103,15 @@ class _MenuState extends State<DDrawer> {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 13, vertical: 7),
-                          child: SvgPicture.asset(menu[i].icon),
+                          child: SvgPicture.asset(menu[i].icon,
+                              color: Colors.white),
                         ),
                         Text(
                           menu[i].title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
-                            color: selected == i ? Colors.black : Colors.grey,
-                            fontWeight: selected == i
-                                ? FontWeight.w600
-                                : FontWeight.normal,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal,
                           ),
                         )
                       ],

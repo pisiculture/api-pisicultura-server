@@ -15,4 +15,4 @@ const green = Color.fromRGBO(51, 173, 127, 1);
 const red = Colors.red;
 
 // Default App Padding
-const appPadding = 16.0;
+const appPadding = 10.0;

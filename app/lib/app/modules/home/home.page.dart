@@ -4,7 +4,6 @@ import 'package:mobile/app/global/constants/constants.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
 import 'package:mobile/app/modules/home/components/notifications.dart';
 import 'package:mobile/app/modules/home/components/scaffold.dart';
-import 'package:mobile/app/modules/home/components/top_referals.dart';
 import 'package:mobile/app/modules/home/components/users_by_device.dart';
 import 'package:mobile/app/modules/home/components/viewers.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
@@ -19,7 +18,7 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return DScaffold(
+    return DxScaffold(
       scaffoldKey: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -71,7 +70,9 @@ class HomePage extends GetView<HomeController> {
                                 if (!Responsive.isMobile(context))
                                   const Expanded(
                                     flex: 2,
-                                    child: TopReferals(),
+                                    child: Center(
+                                      child: Text("Implementar"),
+                                    ),
                                   ),
                                 if (!Responsive.isMobile(context))
                                   const SizedBox(
@@ -89,7 +90,9 @@ class HomePage extends GetView<HomeController> {
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
-                              const TopReferals(),
+                              const Center(
+                                child: Text("Implementar"),
+                              ),
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
