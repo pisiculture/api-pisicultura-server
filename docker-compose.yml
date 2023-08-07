@@ -47,6 +47,13 @@ services:
         - 27017:27017
       volumes:
         - db:/data/db
+
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_PASSWORD: "root"
+      ports:
+      - "5432:5432"
   
 volumes:
   db:
