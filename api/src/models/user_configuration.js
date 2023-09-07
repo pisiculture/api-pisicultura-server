@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const ConfigurationSchema = new Schema({
+const UserConfigurationSchema = new Schema({
     notify: {
         type: Boolean,
         require: true
@@ -14,6 +14,6 @@ const ConfigurationSchema = new Schema({
 }, { timestamps: true });
 
 
-const Configuration = mongoose.model("configuration", ConfigurationSchema);
+const UserConfiguration = mongoose.model("user_configuration", UserConfigurationSchema);
 
-module.exports = { Configuration, ConfigurationSchema }
+module.exports = { UserConfiguration, UserConfigurationSchema }

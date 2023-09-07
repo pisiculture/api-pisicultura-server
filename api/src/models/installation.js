@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose;
 
-const { ConfigurationSchema } = require("./configuration");
+const { InstallationConfigurationSchema } = require("./installation_configuration");
 
 const InstallationSchema = new Schema({
     key: {
@@ -14,7 +14,7 @@ const InstallationSchema = new Schema({
         require: true
     },
     configurations: {
-        type: ConfigurationSchema
+        type: InstallationConfigurationSchema
     },
 }, { timestamp: true });
 

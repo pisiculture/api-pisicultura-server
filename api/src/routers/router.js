@@ -1,13 +1,16 @@
 const router = require("express").Router();
 
-const installationRouter = require("./installation");
-router.use("/installation", installationRouter);
+const userConfigurationRouter = require('./user_configuration');
+router.use("/user/configuration", userConfigurationRouter);
 
 const permissionRouter = require("./permission");
 router.use("/permission", permissionRouter);
 
-const configurationRouter = require('./configuration');
-router.use("/configuration", configurationRouter);
+const installationRouter = require("./installation");
+router.use("/installation", installationRouter);
+
+const installationConfigurationRouter = require('./intallation_configuration');
+router.use("/installation/configuration", installationConfigurationRouter);
 
 const notification = require("./notification")
 router.use("/notification", notification);

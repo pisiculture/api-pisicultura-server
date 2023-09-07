@@ -110,8 +110,8 @@ float calculatePH() {
     soma_tensao = (soma_tensao + tensao);
     delay(100);
   }
+
   float media = soma_tensao / 10;
   float valor_pH = -5.70 * media + valor_calibracao;
-  Serial.println(valor_pH);
   return valor_pH;
 }
