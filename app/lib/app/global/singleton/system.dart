@@ -17,7 +17,7 @@ class System {
 
   getToken() => _user?.getToken();
 
-  getInstallation() => _installation!;
+  getInstallation() => _installation;
   setInstallation(val) => _installation = val;
 
   getUser() => _user;
