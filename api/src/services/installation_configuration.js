@@ -5,6 +5,7 @@ const { InstallationConfiguration: InstallationConfigurationModel } = require(".
 module.exports = {
     async update(key, vo) {
        await InstallationConfigurationModel.findOneAndUpdate({ key: key }, vo);
+       vo.action = "EXECUTE";
        await axios.post("http://192.168.0.121:3000/ws/communication/send-message/" + key, vo)   
     },
 

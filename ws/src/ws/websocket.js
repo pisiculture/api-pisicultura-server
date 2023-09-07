@@ -98,10 +98,11 @@ module.exports = {
         .filter(i => (i.key === key) && (i.connection == connection))
         .forEach(s => {
           send = true;
+          console.log(message)
           s.session.send(JSON.stringify(message));
         });
-      if (!send)
-        throw Error("Client not connected in server...");
+      //if (!send)
+      //  throw Error("Client not connected in server...");
     }
   }
 }
