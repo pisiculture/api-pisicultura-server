@@ -4,9 +4,8 @@ const { InstallationConfiguration: InstallationConfigurationModel } = require(".
 
 module.exports = {
     async update(key, vo) {
-
-        await InstallationConfigurationModel.findOneAndUpdate({ key: key }, vo);
-        axios.post("192.168.0.121:3000/ws/communication/send-message/" + key, vo);
+       await InstallationConfigurationModel.findOneAndUpdate({ key: key }, vo);
+       await axios.post("http://192.168.0.121:3000/ws/communication/send-message/" + key, vo)   
     },
 
     async createDefault() {
