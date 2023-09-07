@@ -68,31 +68,22 @@ class HomePage extends GetView<HomeController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 if (!Responsive.isMobile(context))
-                                  const Expanded(
+                                  Expanded(
                                     flex: 2,
-                                    child: Center(
-                                      child: Text("Implementar"),
-                                    ),
+                                    child: _commands(),
                                   ),
                                 if (!Responsive.isMobile(context))
-                                  const SizedBox(
-                                    width: appPadding,
-                                  ),
+                                  const SizedBox(width: appPadding),
                                 const Expanded(
                                   flex: 3,
                                   child: Viewers(),
                                 ),
                               ],
                             ),
-                            const SizedBox(
-                              height: appPadding,
-                            ),
+                            const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
-                            if (Responsive.isMobile(context))
-                              const Center(
-                                child: Text("Implementar"),
-                              ),
+                            if (Responsive.isMobile(context)) _commands(),
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
@@ -114,6 +105,50 @@ class HomePage extends GetView<HomeController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _commands() {
+    return Center(
+      child: Column(
+        children: [
+          const Center(
+            child: Text("Controles"),
+          ),
+          Center(
+            child: Obx(
+              () => Column(
+                children: [
+                  Row(
+                    children: [
+                      Switch(
+                        value: controller.waterPump.value,
+                        onChanged: (value) {
+                          controller.waterPump.value = value;
+                          controller.updateControles();
+                        },
+                      ),
+                      const Text("Bomba"),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Switch(
+                        value: controller.waterLock.value,
+                        onChanged: (value) {
+                          controller.waterLock.value = value;
+                          controller.updateControles();
+                        },
+                      ),
+                      const Text("Trava dispersor")
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

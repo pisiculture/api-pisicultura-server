@@ -18,6 +18,10 @@ const InstallationConfigurationSchema = new Schema({
         type: Boolean,
         require: true
     },
+    lighting: {
+        type: Boolean,
+        require: true
+    },
     lastUpdate: {
         type: Date,
         require: true

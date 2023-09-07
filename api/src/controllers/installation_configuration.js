@@ -6,6 +6,7 @@ module.exports = {
             const json = {
                 water_pump: req.body.water_pump,
                 water_lock: req.body.water_lock,
+                lighting: req.body.lighting
             }
             service.update(req.params.key, json);
             res.status(200).json({ message: "Configuration update success." });

@@ -12,7 +12,8 @@ module.exports = {
     async createDefault() {
         const model = new InstallationConfigurationModel({
             water_pump: false,
-            water_lock: false
+            water_lock: false,
+            lighting: false
         });
         return await model.save();
     },
