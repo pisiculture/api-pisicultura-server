@@ -8,6 +8,7 @@ class InstallationConfigurationApiClient extends DwGetConnect {
     try {
       final response =
           await getD('$baseUrlApp/api/installation/configuration/$key');
+      print(response);
       return response.statusCode == 200 ? response.body : null;
     } catch (e) {
       return null;

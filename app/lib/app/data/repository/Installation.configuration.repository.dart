@@ -8,9 +8,9 @@ class InstallationConfigurationRepository {
 
   Future<InstallationConfiguration> find() async {
     InstallationConfiguration response = InstallationConfiguration();
-    List<dynamic> req = await apiClient
+    var req = await apiClient
         .getConfigs(System.getInstance().getInstallation().getKey());
-    if (req.isNotEmpty) {
+    if (req != null && req.isNotEmpty) {
       /* for (var v in req) {
         if (v is Map<String, dynamic>) {
           config.add(Notifications.fromJson(v));

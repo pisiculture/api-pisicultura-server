@@ -32,6 +32,7 @@ class HomeController extends GetxController {
         .getPermission(System.getInstance().getUser().getId());
     if (per.isNotEmpty) {
       System.getInstance().setInstallation(per[0].getInstallation());
+      startControles();
       channel.sink.add(
           '{ "event": "REGISTER", "key": "${per[0].getInstallation().getKey()}", "connection": "CLIENT", "service": "DASHBOARD" }');
     }
@@ -43,6 +44,14 @@ class HomeController extends GetxController {
     vo.waterPump = waterPump.value;
     vo.waterLock = waterLock.value;
     installationConfiguratioRepository.update(vo);
+  }
+
+  startControles() async {
+    InstallationConfiguration vo =
+        await installationConfiguratioRepository.find();
+    vo.lighting = lighting.value;
+    vo.waterPump = waterPump.value;
+    vo.waterLock = waterLock.value;
   }
 
   HomeController() {

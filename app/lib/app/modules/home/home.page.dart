@@ -4,11 +4,8 @@ import 'package:mobile/app/global/constants/constants.dart';
 import 'package:mobile/app/modules/home/components/cards.dart';
 import 'package:mobile/app/modules/home/components/notifications.dart';
 import 'package:mobile/app/modules/home/components/scaffold.dart';
-import 'package:mobile/app/modules/home/components/users_by_device.dart';
-import 'package:mobile/app/modules/home/components/viewers.dart';
 import 'package:mobile/app/modules/home/home.controller.dart';
 import 'package:mobile/app/global/constants/responsive.dart';
-import 'package:mobile/app/modules/home/widgets/line_chart_card.dart';
 
 class HomePage extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -35,7 +32,6 @@ class HomePage extends GetView<HomeController> {
                           children: [
                             AnalyticCards(controller: controller),
                             const SizedBox(height: appPadding),
-                            LineChartCard(),
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
@@ -72,32 +68,15 @@ class HomePage extends GetView<HomeController> {
                                     flex: 2,
                                     child: _commands(),
                                   ),
-                                if (!Responsive.isMobile(context))
-                                  const SizedBox(width: appPadding),
-                                const Expanded(
-                                  flex: 3,
-                                  child: Viewers(),
-                                ),
                               ],
                             ),
                             const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context))
                               const SizedBox(height: appPadding),
                             if (Responsive.isMobile(context)) _commands(),
-                            if (Responsive.isMobile(context))
-                              const SizedBox(height: appPadding),
-                            if (Responsive.isMobile(context))
-                              const UsersByDevice(),
                           ],
                         ),
                       ),
-                      if (!Responsive.isMobile(context))
-                        const SizedBox(width: appPadding),
-                      if (!Responsive.isMobile(context))
-                        const Expanded(
-                          flex: 2,
-                          child: UsersByDevice(),
-                        ),
                     ],
                   ),
                 ],
@@ -142,6 +121,18 @@ class HomePage extends GetView<HomeController> {
                         },
                       ),
                       const Text("Trava dispersor")
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Switch(
+                        value: controller.lighting.value,
+                        onChanged: (value) {
+                          controller.lighting.value = value;
+                          controller.updateControles();
+                        },
+                      ),
+                      const Text("Luminária")
                     ],
                   )
                 ],

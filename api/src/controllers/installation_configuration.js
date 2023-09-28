@@ -15,7 +15,13 @@ module.exports = {
         }
     },
 
-    getByInstallation: async (req, res) => {
+    getByKey: async (req, res) => {
+        try {
+            const response = service.findByKey(req.params.key);
+            res.status(200).json(response);   
+        } catch (error) {
+            res.status(406).json({ message: error.message });  
+        }
 
     }
 }
