@@ -4,9 +4,13 @@ const { InstallationConfiguration: InstallationConfigurationModel } = require(".
 
 module.exports = {
     async update(key, vo) {
-        await InstallationConfigurationModel.findOneAndUpdate({ key: key }, vo);
+       try {
+        await InstallationConfigurationModel.updateOne({ key: key }, vo);
         vo.action = "EXECUTE";
         await axios.post("http://192.168.0.121:3000/ws/communication/send-message/" + key, vo)
+       } catch (error) {
+        console.log(error)
+       }
     },
 
     async createDefault(key) {
@@ -20,11 +24,6 @@ module.exports = {
     },
 
     async findByKey(key) {
-      console.log(key)
-       const response = await InstallationConfigurationModel.find({ key: key });
-       console.log(response);
-        if (await response.length == 0)
-            return {}
-        return response;
+        return InstallationConfigurationModel.findOne({ key: key });
     }
 }

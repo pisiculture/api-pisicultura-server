@@ -11,12 +11,9 @@ class InstallationConfigurationRepository {
     var req = await apiClient
         .getConfigs(System.getInstance().getInstallation().getKey());
     if (req != null && req.isNotEmpty) {
-      /* for (var v in req) {
-        if (v is Map<String, dynamic>) {
-          config.add(Notifications.fromJson(v));
-        }
+      if (req is Map<String, dynamic>) {
+        response = InstallationConfiguration.fromJson(req);
       }
-      */
     }
     return response;
   }

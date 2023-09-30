@@ -17,8 +17,7 @@ module.exports = {
 
     getByKey: async (req, res) => {
         try {
-            const response = service.findByKey(req.params.key);
-            res.status(200).json(response);   
+            res.status(200).json(await service.findByKey(req.params.key));   
         } catch (error) {
             res.status(406).json({ message: error.message });  
         }

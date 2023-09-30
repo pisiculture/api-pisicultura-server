@@ -49,9 +49,9 @@ class HomeController extends GetxController {
   startControles() async {
     InstallationConfiguration vo =
         await installationConfiguratioRepository.find();
-    vo.lighting = lighting.value;
-    vo.waterPump = waterPump.value;
-    vo.waterLock = waterLock.value;
+    lighting.value = vo.lighting!;
+    waterPump.value = vo.waterPump!;
+    waterLock.value = vo.waterLock!;
   }
 
   HomeController() {
