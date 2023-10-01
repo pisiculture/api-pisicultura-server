@@ -50,7 +50,7 @@ class _NotificationInfoState extends State<NotificationInfo> {
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount: lista.length,
                       itemBuilder: (context, index) {
                         if (lista.isNotEmpty) {
                           return ListTile(

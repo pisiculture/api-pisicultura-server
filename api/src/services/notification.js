@@ -3,13 +3,14 @@ const { User: userModel } = require("../models/user");
 module.exports = {
 
   async create(vo) {
-    const user = userModel.findOne({ id: user.iduser });
+    const user = await userModel.findOne({ id: vo.iduser });
     if (user) {
       const model = new NotificationModel({
         user: user,
         title: vo.title,
         description: vo.description,
         state: "PENDING",
+        createAt: new Date(),
         type: vo.type
       });
       await model.save();
@@ -18,7 +19,8 @@ module.exports = {
 
   async findByIdUser(id) {
     const response = [];
-    await NotificationModel.find({ "user.id": id, state: { $ne: "READ" } })
+    console.log(id)
+    await NotificationModel.find({ "user._id": id, state: { $ne: "READ" } })
       .then(res => {
         res.forEach(el => {
           response.push({
@@ -32,7 +34,6 @@ module.exports = {
         });
       })
       .catch(err => console.log(err.message));
-    console.log(response)
     return response;
   },
 

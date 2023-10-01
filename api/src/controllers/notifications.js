@@ -4,7 +4,7 @@ module.exports = {
 
     async findByIdUser(req, res) {
          try {
-            res.status(200).json(service.findByIdUser(req.params.id));
+            res.status(200).json(await service.findByIdUser(req.params.id));
          } catch (error) {
             res.status(404).json({ message: "Not found notifications"});
          }
