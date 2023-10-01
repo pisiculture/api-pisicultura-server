@@ -13,6 +13,7 @@ class UserRegisterController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+  TextEditingController key = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -23,6 +24,7 @@ class UserRegisterController extends GetxController {
         user.setName(name.text);
         user.setEmail(email.text);
         user.setPassword(password.text);
+        user.setKey(key.text);
 
         try {
           UserSession? newUsuario = await repositoty.create(user);

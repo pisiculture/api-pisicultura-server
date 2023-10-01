@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 let sessions = [];
 const analysisService = require("../services/analysis");
+const { InstallationConfiguration: InstallationConfigurationModel } = require("../models/installation_configuration");
 
 function onError(session, err) {
   sessions = sessions.filter(s => s.session !== session);
@@ -11,6 +12,19 @@ function serviceSocketExec(session) {
   if (sessions.filter(i => i.session != session).length > 0) {
     session.send(JSON.stringify({ action: 'READ' }));
     setTimeout(() => serviceSocketExec(session), 5000);
+  }
+}
+
+async function sendConfigSystem(key, session) {
+  const value = await InstallationConfigurationModel.findOne({ key: key});
+  if(value) {
+    const message = {
+      action: 'EXECUTE', 
+      water_pump: value.water_pump,
+      water_lock: value.water_lock,
+      lightinh: value.lighting
+    };
+    session.send(JSON.stringify(message))
   }
 }
 
@@ -43,8 +57,10 @@ function onMessage(session, data) {
         }
         return i;
       });
-      if (json.connection == "SOCKET")
+      if (json.connection == "SOCKET") {
+        sendConfigSystem(json.key, session);
         serviceSocketExec(session);
+      }
       break;
     }
     case 'MESSAGE': {
@@ -98,7 +114,6 @@ module.exports = {
         .filter(i => (i.key === key) && (i.connection == connection))
         .forEach(s => {
           send = true;
-          console.log(message)
           s.session.send(JSON.stringify(message));
         });
       //if (!send)

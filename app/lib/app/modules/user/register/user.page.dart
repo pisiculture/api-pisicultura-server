@@ -33,6 +33,8 @@ class UserRegisterPage extends GetView<UserRegisterController> {
                   isPassword: true,
                   funValidarCampo: controller.validarCampoConfirmarSenha,
                 ),
+                DwTextFormField(
+                    label: "Chave de integração:", controll: controller.key),
                 const SizedBox(height: 20),
                 DButton(onTap: () => controller.create(), caption: "Cadastrar"),
               ],
