@@ -28,9 +28,7 @@ class _NotificationInfoState extends State<NotificationInfo> {
             const Center(
               child: Text(
                 "Notificações",
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 10),
@@ -53,13 +51,16 @@ class _NotificationInfoState extends State<NotificationInfo> {
                       itemCount: lista.length,
                       itemBuilder: (context, index) {
                         if (lista.isNotEmpty) {
-                          return ListTile(
-                            title: Text(lista[index].getTitle().toString()),
-                            subtitle:
-                                Text(lista[index].getDescription().toString()),
-                            leading: Icon(
-                              Icons.device_thermostat_sharp,
-                              color: findColor(lista[index].getType()),
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 2),
+                            child: Container(
+                              color: Colors.black12,
+                              child: ListTile(
+                                title: Text(lista[index].getTitle().toString()),
+                                subtitle: Text(
+                                    lista[index].getDescription().toString()),
+                                leading: findIcon(lista[index].getType()),
+                              ),
                             ),
                           );
                         } else {
@@ -89,11 +90,23 @@ class _NotificationInfoState extends State<NotificationInfo> {
     return "";
   }
 
+  Icon findIcon(String type) {
+    if (type == "INFO") {
+      return Icon(Icons.info_outlined, color: findColor(type));
+    } else if (type == "WARNING") {
+      return Icon(Icons.wechat, color: findColor(type));
+    } else if (type == "ERROR") {
+      return Icon(Icons.block, color: findColor(type));
+    } else {
+      return const Icon(Icons.abc_outlined);
+    }
+  }
+
   Color findColor(String type) {
     if (type == "INFO") {
       return Colors.blue;
     } else if (type == "WARNING") {
-      return Colors.yellowAccent;
+      return const Color.fromARGB(255, 233, 144, 28);
     } else if (type == "ERROR") {
       return Colors.red;
     } else {

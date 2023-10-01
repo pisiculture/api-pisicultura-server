@@ -10,7 +10,7 @@ class DxScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(),
+      appBar: AppBar(title: const Text("Dashboard")),
       drawer: DxDrawer(scaffoldKey: scaffoldKey),
       body: SafeArea(
         child: body,

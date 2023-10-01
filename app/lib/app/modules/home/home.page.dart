@@ -93,7 +93,10 @@ class HomePage extends GetView<HomeController> {
       child: Column(
         children: [
           const Center(
-            child: Text("Controles"),
+            child: Text(
+              "Controles",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
           Center(
             child: Obx(
