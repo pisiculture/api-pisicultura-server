@@ -7,7 +7,7 @@ module.exports = {
        try {
         await InstallationConfigurationModel.updateOne({ key: key }, vo);
         vo.action = "EXECUTE";
-        await axios.post("http://192.168.0.121:3000/ws/communication/send-message/" + key, vo)
+        await axios.post("http://192.168.0.121:3002/ws/communication/send-message/" + key, vo)
        } catch (error) {
         console.log(error)
        }
