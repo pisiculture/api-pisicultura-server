@@ -137,11 +137,11 @@ class AnalyticInfoCardGridView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 60,
-                    width: 60,
+                    height: 40,
+                    width: 40,
                     child: Icon(
                       itens[index].icon,
-                      size: 60,
+                      size: 40,
                       color: Colors.white.withOpacity(0.4),
                     ),
                   )
@@ -154,7 +154,7 @@ class AnalyticInfoCardGridView extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: textColor,
-                    fontSize: Responsive.isDesktop(context) ? 18 : 22,
+                    fontSize: Responsive.isDesktop(context) ? 18 : 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

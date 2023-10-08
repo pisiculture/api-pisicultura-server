@@ -4,7 +4,7 @@ const { User: UserModel } = require('../models/user.js');
 
 module.exports = {
    
-    async auth(json) {       
+    async auth(json) {  
         const { email, password } = json;
     
         if (!email) 

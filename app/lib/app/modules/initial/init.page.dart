@@ -18,6 +18,7 @@ class InitPage extends GetView<InitController> {
         children: <Widget>[
           AnimatedSplashScreen(
             animationDuration: const Duration(seconds: 1),
+            splashIconSize: 150,
             splash: 'assets/logo.png',
             splashTransition: SplashTransition.sizeTransition,
             pageTransitionType: PageTransitionType.leftToRight,

@@ -4,8 +4,9 @@ module.exports = {
 
     async findByKey(key) {
         const response = await InstallationModel.findOne({ key: key })
+        console.log(response)
         if (!response)
-            throw Error("Installation not found.");
+            return {};
         return response;
     }
 }
