@@ -16,13 +16,13 @@ function serviceSocketExec(session) {
 }
 
 async function sendConfigSystem(key, session) {
-  const value = await InstallationConfigurationModel.findOne({ key: key});
-  if(value) {
+  const value = await InstallationConfigurationModel.findOne({ key: key });
+  if (value) {
     const message = {
-      action: 'EXECUTE', 
+      action: 'EXECUTE',
       water_pump: value.water_pump,
       water_lock: value.water_lock,
-      lightinh: value.lighting
+      lighting: value.lighting
     };
     session.send(JSON.stringify(message))
   }
